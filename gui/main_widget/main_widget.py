@@ -14,6 +14,12 @@ class MainWidget(QWidget, Ui_Form):
         # This function is inherited from the Ui_Form class.
         self.setupUi(self)
 
+        # Call the connect_slots function to connect all the event-handlers to functions in this class.
+        self.connect_slots()
+
+    def connect_slots(self) -> None:
+        pass
+
 
 if __name__ == '__main__':
     app = QApplication([])
