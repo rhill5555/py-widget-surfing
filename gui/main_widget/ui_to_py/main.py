@@ -53,7 +53,13 @@ class Ui_Form(object):
         self.count_lbl.setStyleSheet("#count_lbl{color: #3d4446}")
         self.count_lbl.setObjectName("count_lbl")
         self.cont_entry = QtWidgets.QComboBox(Form)
-        self.cont_entry.setGeometry(QtCore.QRect(180, 130, 171, 21))
+        self.cont_entry.setGeometry(QtCore.QRect(180, 130, 181, 21))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.cont_entry.setFont(font)
         self.cont_entry.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-color: rgb(61, 68, 70);")
         self.cont_entry.setObjectName("cont_entry")
@@ -65,7 +71,7 @@ class Ui_Form(object):
         self.cont_entry.addItem("")
         self.cont_entry.addItem("")
         self.cont_entry_2 = QtWidgets.QComboBox(Form)
-        self.cont_entry_2.setGeometry(QtCore.QRect(180, 180, 171, 21))
+        self.cont_entry_2.setGeometry(QtCore.QRect(180, 180, 181, 21))
         self.cont_entry_2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-color: rgb(61, 68, 70);")
         self.cont_entry_2.setObjectName("cont_entry_2")

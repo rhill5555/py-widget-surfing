@@ -101,9 +101,17 @@
     <rect>
      <x>180</x>
      <y>130</y>
-     <width>171</width>
+     <width>181</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Verdana</family>
+     <pointsize>11</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(255, 255, 255);
@@ -150,7 +158,7 @@ border-color: rgb(61, 68, 70);</string>
     <rect>
      <x>180</x>
      <y>180</y>
-     <width>171</width>
+     <width>181</width>
      <height>21</height>
     </rect>
    </property>
