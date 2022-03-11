@@ -2,7 +2,7 @@ import sys
 
 from PyQt5.QtWidgets import QWidget, QApplication
 
-from gui.main_widget.ui_to_py.test import Ui_Form
+from gui.main_widget.ui_to_py.main import Ui_Form
 
 
 class MainWidget(QWidget, Ui_Form):
@@ -17,8 +17,11 @@ class MainWidget(QWidget, Ui_Form):
         # Call the connect_slots function to connect all the event-handlers to functions in this class.
         self.connect_slots()
 
-    def connect_slots(self) -> None:
-        pass
+    def connect_slots(self):
+        self.cont_entry.currentIndexChanged.connect(self.slot_cont_entry_on_selection_change)
+
+    def slot_cont_entry_on_selection_change(self):
+        print(self.cont_entry.currentText())
 
 
 if __name__ == '__main__':
