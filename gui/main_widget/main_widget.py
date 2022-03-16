@@ -54,6 +54,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.BreakCountryCb.currentIndexChanged.connect(self.slot_breakcountrycb_on_index_change)
         self.BreakRegionCb.currentIndexChanged.connect(self.slot_breakregioncb_on_index_change)
         self.BreakSubmit.clicked.connect(self.slot_breaksubmit_on_clicked)
+        self.addlocationbutton.connect(self.slot_addloc_on_clicked)
 
 
     # This setups up everything at the first startup.
