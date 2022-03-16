@@ -1,6 +1,5 @@
 import sys
 from enum import Enum
-from typing import Optional
 
 from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow
 
