@@ -144,7 +144,19 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         elif self.BreakBurnEx.isChecked():
             print('Exhausting')
 
-        if self.
+        if self.BreakBeachBox.isChecked():
+            print('Beach')
+        if self.BreakPointBox.isChecked():
+            print('Point')
+        if self.BreakReefBox.isChecked():
+            print('Reef')
+        if self.BreakRiverBox.isChecked():
+            print('River')
+        if self.BreakEngBox.isChecked():
+            print('Engineered')
+
+        breakName = self.BreakBreakEntry.text()
+        print(breakName)
 
 if __name__ == '__main__':
     app = QApplication([])
