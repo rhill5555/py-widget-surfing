@@ -1,5 +1,6 @@
 import sys
 from enum import Enum
+from typing import Optional
 
 from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow
 
@@ -137,26 +138,34 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
     # This is the event handler (slot) for the submit button being clicked.
     def slot_breaksubmit_on_clicked(self):
-        if self.BreakBurnLight.isChecked():
-            print('Light')
-        elif self.BreakBurnMed.isChecked():
-            print('Medium')
-        elif self.BreakBurnEx.isChecked():
-            print('Exhausting')
-
-        if self.BreakBeachBox.isChecked():
-            print('Beach')
-        if self.BreakPointBox.isChecked():
-            print('Point')
-        if self.BreakReefBox.isChecked():
-            print('Reef')
-        if self.BreakRiverBox.isChecked():
-            print('River')
-        if self.BreakEngBox.isChecked():
-            print('Engineered')
+        def breaktypelst(*args):
+            tempbreaklst = []
+            if self.BreakBeachBox.isChecked():
+                tempbreaklst.append('Beach')
+            if self.BreakPointBox.isChecked():
+                tempbreaklst.append('Point')
+            if self.BreakReefBox.isChecked():
+                tempbreaklst.append('Reef')
+            if self.BreakRiverBox.isChecked():
+                tempbreaklst.append('River')
+            if self.BreakEngBox.isChecked():
+                tempbreaklst.append('Engineered')
+            return tempbreaklst
 
         breakName = self.BreakBreakEntry.text()
         print(breakName)
+
+        breaktype = breaktypelst()
+        print(breaktype)
+
+        if self.BreakBurnLight.isChecked():
+            breakburn = 'Light'
+        elif self.BreakBurnMed.isChecked():
+            breakburn = 'Medium'
+        elif self.BreakBurnEx.isChecked():
+            breakburn = 'Exhausting'
+        print(breakburn)
+
 
 if __name__ == '__main__':
     app = QApplication([])
