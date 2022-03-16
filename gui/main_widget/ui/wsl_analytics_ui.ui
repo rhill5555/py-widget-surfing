@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1100</width>
-    <height>850</height>
+    <height>900</height>
    </rect>
   </property>
   <property name="font">
@@ -31,88 +31,12 @@ border-color: rgb(1, 31, 75);</string>
    <enum>QTabWidget::Triangular</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="Line" name="hLine1">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>40</y>
-      <width>1131</width>
-      <height>8</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(196, 98, 253);
-color: rgb(196, 98, 253);</string>
-    </property>
-    <property name="lineWidth">
-     <number>0</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="Line" name="hLine2">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>30</y>
-      <width>1131</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 0, 129);</string>
-    </property>
-    <property name="lineWidth">
-     <number>0</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="Line" name="hLine3">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>30</y>
-      <width>1131</width>
-      <height>4</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255,207,64);</string>
-    </property>
-    <property name="lineWidth">
-     <number>0</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
    <widget class="Line" name="hLine4">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1131</width>
+      <width>1100</width>
       <height>31</height>
      </rect>
     </property>
@@ -626,7 +550,7 @@ QTabBar::tab:!selected {
       <property name="currentIndex">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="breakformtab">
        <attribute name="title">
         <string>Breaks</string>
        </attribute>
@@ -879,23 +803,39 @@ QTabBar::tab:!selected {
          <string>Submit</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="addlocationbutton">
+        <property name="geometry">
+         <rect>
+          <x>620</x>
+          <y>100</y>
+          <width>150</width>
+          <height>40</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background: #dcb3ff;</string>
+        </property>
+        <property name="text">
+         <string>Add Location</string>
+        </property>
+       </widget>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="breakbiotab">
        <attribute name="title">
         <string>Bios</string>
        </attribute>
       </widget>
-      <widget class="QWidget" name="tab_3">
+      <widget class="QWidget" name="breakschedtab">
        <attribute name="title">
         <string>Schedule</string>
        </attribute>
       </widget>
-      <widget class="QWidget" name="tab_4">
+      <widget class="QWidget" name="breakheattab">
        <attribute name="title">
         <string>Heats</string>
        </attribute>
       </widget>
-      <widget class="QWidget" name="tab_9">
+      <widget class="QWidget" name="breakheatrestab">
        <attribute name="title">
         <string>Heat Results</string>
        </attribute>
@@ -906,6 +846,37 @@ QTabBar::tab:!selected {
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>BreakContCb</tabstop>
+  <tabstop>DatatabWidget</tabstop>
+  <tabstop>BreakRegionCb</tabstop>
+  <tabstop>BreakCityCb</tabstop>
+  <tabstop>BreakBeachBox</tabstop>
+  <tabstop>BreakPointBox</tabstop>
+  <tabstop>BreakBreakEntry</tabstop>
+  <tabstop>BreakCountryCb</tabstop>
+  <tabstop>BreakRiverBox</tabstop>
+  <tabstop>BreakReefBox</tabstop>
+  <tabstop>BreakBurnLight</tabstop>
+  <tabstop>BreakBurnMed</tabstop>
+  <tabstop>BreakBurnEx</tabstop>
+  <tabstop>BreakEngBox</tabstop>
+  <tabstop>BreakSubmit</tabstop>
+  <tabstop>BreakContCb</tabstop>
+  <tabstop>BreakRegionCb</tabstop>
+  <tabstop>BreakCityCb</tabstop>
+  <tabstop>BreakPointBox</tabstop>
+  <tabstop>BreakBeachBox</tabstop>
+  <tabstop>BreakBreakEntry</tabstop>
+  <tabstop>BreakCountryCb</tabstop>
+  <tabstop>BreakRiverBox</tabstop>
+  <tabstop>BreakReefBox</tabstop>
+  <tabstop>BreakBurnLight</tabstop>
+  <tabstop>BreakBurnMed</tabstop>
+  <tabstop>BreakBurnEx</tabstop>
+  <tabstop>BreakEngBox</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
