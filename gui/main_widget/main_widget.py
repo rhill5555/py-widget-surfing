@@ -45,12 +45,23 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         # Call the connect_slots function to connect all the event-handlers to functions in this class.
         self.connect_slots()
 
+    # This defines the event handlers for everything.
     def connect_slots(self):
-        #self.cont_entry.currentIndexChanged.connect(self.slot_cont_entry_on_selection_change)
+        self.BreakContCb.currentIndexChanged.connect(self.slot_breakcontcb_on_index_change)
+        self.BreakCountryCb.currentIndexChanged.connect(self.slot_breakcountrycb_on_index_change)
+        self.BreakRegionCb.currentIndexChanged.connect(self.slot_breakregioncb_on_index_change)
+
+    # This is the event handler (slot) for the combobox "breakcontcb" changing index.
+    def slot_breakcontcb_on_index_change(self):
         pass
 
-   # def slot_cont_entry_on_selection_change(self):
-        #print(self.cont_entry.currentText())
+    # This is the event handler (slot) for the combobox "breakcountrycb" changing index.
+    def slot_breakcountrycb_on_index_change(self):
+        pass
+
+    # This is the event handler (slot) for the combobox "breakregioncb" changing index.
+    def slot_breakregioncb_on_index_change(self):
+        pass
 
 
 if __name__ == '__main__':
