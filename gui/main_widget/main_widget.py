@@ -45,23 +45,94 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         # Call the connect_slots function to connect all the event-handlers to functions in this class.
         self.connect_slots()
 
+        # Call to setup everything on the gui.
+        self.on_startup()
+
     # This defines the event handlers for everything.
     def connect_slots(self):
         self.BreakContCb.currentIndexChanged.connect(self.slot_breakcontcb_on_index_change)
         self.BreakCountryCb.currentIndexChanged.connect(self.slot_breakcountrycb_on_index_change)
         self.BreakRegionCb.currentIndexChanged.connect(self.slot_breakregioncb_on_index_change)
 
+
+    # This setups up everything at the first startup.
+    def on_startup(self):
+        # Add Continents to the combobox.
+        self.BreakContCb.addItems(
+            [item.name for item in Places.Continent]
+        )
+
     # This is the event handler (slot) for the combobox "breakcontcb" changing index.
     def slot_breakcontcb_on_index_change(self):
-        pass
+        if self.BreakContCb.currentText() == "Africa":
+            # Clear the Countries Combobox.
+            self.BreakCountryCb.clear()
+            # Add the countries.
+            self.BreakCountryCb.addItems(
+                [item.name for item in Places.Africa]
+            )
+        elif self.BreakContCb.currentText() == "North_America":
+            # Clear the Countries Combobox.
+            self.BreakCountryCb.clear()
+            # Add the countries.
+            self.BreakCountryCb.addItems(
+                [item.name for item in Places.NorthAmerica]
+            )
 
     # This is the event handler (slot) for the combobox "breakcountrycb" changing index.
     def slot_breakcountrycb_on_index_change(self):
-        pass
+        if self.BreakCountryCb.currentText() == "Eastern_Cape":
+            # Clear the Region Combobox.
+            self.BreakRegionCb.clear()
+            # Add the regions.
+            self.BreakRegionCb.addItems(
+                Places.Africa.Eastern_Cape.value
+            )
+        elif self.BreakCountryCb.currentText() == "USA":
+            # Clear the Region Combobox.
+            self.BreakRegionCb.clear()
+            # Add the regions.
+            self.BreakRegionCb.addItems(
+                Places.NorthAmerica.USA.value
+            )
+        elif self.BreakCountryCb.currentText() == "Mexico":
+            # Clear the Region Combobox.
+            self.BreakRegionCb.clear()
+            # Add the regions.
+            self.BreakRegionCb.addItems(
+                Places.NorthAmerica.Mexico.value
+            )
 
     # This is the event handler (slot) for the combobox "breakregioncb" changing index.
     def slot_breakregioncb_on_index_change(self):
-        pass
+        if self.BreakRegionCb.currentText() == "Eastern_Cape":
+            # Clear the City Combobox.
+            self.BreakCityCb.clear()
+            # Add the regions.
+            self.BreakCityCb.addItems(
+                [item.name for item in Places.Eastern_Cape]
+            )
+        elif self.BreakRegionCb.currentText() == "California":
+            # Clear the City Combobox.
+            self.BreakCityCb.clear()
+            # Add the regions.
+            self.BreakCityCb.addItems(
+                [item.name for item in Places.California]
+            )
+        elif self.BreakRegionCb.currentText() == "Hawaii":
+            # Clear the City Combobox.
+            self.BreakCityCb.clear()
+            # Add the regions.
+            self.BreakCityCb.addItems(
+                [item.name for item in Places.Hawaii]
+            )
+        elif self.BreakRegionCb.currentText() == "Ox":
+            # Clear the City Combobox.
+            self.BreakCityCb.clear()
+            # Add the regions.
+            self.BreakCityCb.addItems(
+                [item.name for item in Places.Ox]
+            )
 
 
 if __name__ == '__main__':
