@@ -53,6 +53,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.BreakContCb.currentIndexChanged.connect(self.slot_breakcontcb_on_index_change)
         self.BreakCountryCb.currentIndexChanged.connect(self.slot_breakcountrycb_on_index_change)
         self.BreakRegionCb.currentIndexChanged.connect(self.slot_breakregioncb_on_index_change)
+        self.BreakSubmit.clicked.connect(self.slot_breaksubmit_on_clicked)
 
 
     # This setups up everything at the first startup.
@@ -134,6 +135,16 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                 [item.name for item in Places.Ox]
             )
 
+    # This is the event handler (slot) for the submit button being clicked.
+    def slot_breaksubmit_on_clicked(self):
+        if self.BreakBurnLight.isChecked():
+            print('Light')
+        elif self.BreakBurnMed.isChecked():
+            print('Medium')
+        elif self.BreakBurnEx.isChecked():
+            print('Exhausting')
+
+        if self.
 
 if __name__ == '__main__':
     app = QApplication([])

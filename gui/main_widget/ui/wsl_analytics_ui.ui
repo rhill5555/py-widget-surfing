@@ -706,14 +706,14 @@ QTabBar::tab:!selected {
          <item row="6" column="1">
           <layout class="QHBoxLayout" name="horizontalLayout">
            <item>
-            <widget class="QRadioButton" name="radioButton_2">
+            <widget class="QCheckBox" name="BreakBeachBox">
              <property name="text">
-              <string>Beach        </string>
+              <string>Beach</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QRadioButton" name="BreakTypePoint">
+            <widget class="QCheckBox" name="BreakPointBox">
              <property name="text">
               <string>Point</string>
              </property>
@@ -752,16 +752,16 @@ QTabBar::tab:!selected {
          <item row="7" column="1">
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <item>
-            <widget class="QRadioButton" name="BreakTypeReef">
+            <widget class="QCheckBox" name="BreakRiverBox">
              <property name="text">
-              <string>Reef          </string>
+              <string>River         </string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QRadioButton" name="BreakTypeRiver">
+            <widget class="QCheckBox" name="BreakReefBox">
              <property name="text">
-              <string>River</string>
+              <string>Reef</string>
              </property>
             </widget>
            </item>
@@ -778,13 +778,6 @@ QTabBar::tab:!selected {
           <widget class="QLabel" name="label_3">
            <property name="text">
             <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="1">
-          <widget class="QRadioButton" name="BreakTypeEng">
-           <property name="text">
-            <string>Engineered</string>
            </property>
           </widget>
          </item>
@@ -858,6 +851,13 @@ QTabBar::tab:!selected {
           <widget class="QRadioButton" name="BreakBurnEx">
            <property name="text">
             <string>Exhausting</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QCheckBox" name="BreakEngBox">
+           <property name="text">
+            <string>Engineered</string>
            </property>
           </widget>
          </item>
