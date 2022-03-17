@@ -1,9 +1,11 @@
 import sys
 from enum import Enum
 
-from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow
+from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QDialog
 
 from gui.main_widget.ui_to_py.wsl_analytics_ui import Ui_MainWindow
+
+from gui.common_widget.dialog_widget.simple_lineedit import SimpleLineEdit
 
 
 class Places:
@@ -54,7 +56,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.BreakCountryCb.currentIndexChanged.connect(self.slot_breakcountrycb_on_index_change)
         self.BreakRegionCb.currentIndexChanged.connect(self.slot_breakregioncb_on_index_change)
         self.BreakSubmit.clicked.connect(self.slot_breaksubmit_on_clicked)
-        self.addlocationbutton.connect(self.slot_addloc_on_clicked)
+        self.addlocationbutton.clicked.connect(self.slot_addloc_on_clicked)
 
 
     # This setups up everything at the first startup.
@@ -166,6 +168,15 @@ class MainWidget(QMainWindow, Ui_MainWindow):
             breakburn = 'Exhausting'
         print(breakburn)
 
+    def slot_addloc_on_clicked(self):
+        dialog = SimpleLineEdit(title = "Title")
+        if dialog.exec() == QDialog.Accepted:
+            Country = dialog.Country_LineEdit.text()
+            print(Country)
+            Region = dialog.Region_LineEdit.text()
+            print(Region)
+            City = dialog.City_LineEdit.text()
+            print(City)
 
 if __name__ == '__main__':
     app = QApplication([])
