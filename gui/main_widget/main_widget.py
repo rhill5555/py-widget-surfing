@@ -1,10 +1,9 @@
 import sys
 from enum import Enum
 
-from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QDialog
-
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QDialog, QFileDialog
 from gui.main_widget.ui_to_py.wsl_analytics_ui import Ui_MainWindow
-
 from gui.common_widget.dialog_widget.simple_lineedit import SimpleLineEdit
 
 ########################################################################################################################
@@ -12,7 +11,11 @@ from gui.common_widget.dialog_widget.simple_lineedit import SimpleLineEdit
 class Places:
     class Continent(Enum):
         Africa = 1
-        North_America = 2
+        Asia = 2
+        Europe = 3
+        North_America = 4
+        Oceania = 5
+        South_America = 6
 
     class Africa(Enum):
         Eastern_Cape = ["Eastern_Cape"]
@@ -66,12 +69,17 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
     # This defines the event handlers for everything.
     def connect_slots(self):
+        # Slots for Break Tab
         self.BreakContCb.currentIndexChanged.connect(self.slot_breakcontcb_on_index_change)
         self.BreakCountryCb.currentIndexChanged.connect(self.slot_breakcountrycb_on_index_change)
         self.BreakRegionCb.currentIndexChanged.connect(self.slot_breakregioncb_on_index_change)
-        self.BreakSubmit.clicked.connect(self.slot_breaksubmit_on_clicked)
         self.addlocationbutton.clicked.connect(self.slot_addloc_on_clicked)
+        self.BreakSubmit.clicked.connect(self.slot_breaksubmit_on_clicked)
+
+        # Slots for Bio Tab
         self.BioAddlocbutton.clicked.connect(self.slot_bioaddlocbut_on_clicked)
+        self.BioAddimagebut.clicked.connect(self.slot_bioaddimage_on_clicked)
+        self.BioSubmitBut.clicked.connect(self.slot_biosubmit_on_clicked)
 
     ####################################################################################################################
     # Event Handlers for Breaks Tab
@@ -155,6 +163,10 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                 [item.name for item in Places.Ox]
             )
 
+    # Event Handler for clicking add location buttun on break tab
+    def slot_addloc_on_clicked(self):
+        AddLocation.addlocation(self)
+
     # This is the event handler (slot) for the submit button being clicked.
     def slot_breaksubmit_on_clicked(self):
         def breaktypelst(*args):
@@ -171,6 +183,18 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                 tempbreaklst.append('Engineered')
             return tempbreaklst
 
+        breakCont = self.BreakContCb.currentText()
+        print(breakCont)
+
+        breakCountry = self.BreakCountryCb.currentText()
+        print(breakCountry)
+
+        breakRegion = self.BreakRegionCb.currentText()
+        print(breakRegion)
+
+        breakCity = self.BreakCityCb.currentText()
+        print(breakCity)
+
         breakName = self.BreakBreakEntry.text()
         print(breakName)
 
@@ -185,11 +209,6 @@ class MainWidget(QMainWindow, Ui_MainWindow):
             breakburn = 'Exhausting'
         print(breakburn)
 
-    # Event Handler for clicking add location buttun on break tab
-    def slot_addloc_on_clicked(self):
-        AddLocation.addlocation(self)
-
-
     ####################################################################################################################
     # Event Handlers for Bio Tab
 
@@ -198,6 +217,17 @@ class MainWidget(QMainWindow, Ui_MainWindow):
     def slot_bioaddlocbut_on_clicked(self):
         AddLocation.addlocation(self)
 
+    # Event Handler for opeing images
+    def slot_bioaddimage_on_clicked(self):
+        pass
+
+    # Bio Tab Submit
+    def slot_biosubmit_on_clicked(self):
+        pass
+
+
+
+########################################################################################################################
 if __name__ == '__main__':
     app = QApplication([])
     win = MainWidget()
