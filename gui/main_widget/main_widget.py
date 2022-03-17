@@ -13,7 +13,6 @@ mydb = mysql.connector.connect(
   password="#LAwaItly19"
 )
 
-
 ########################################################################################################################
 # Define Places
 class Places:
@@ -49,15 +48,24 @@ class Places:
 ########################################################################################################################
 # Add Location Button
 class AddLocation:
-    def addlocation(self):
+    @staticmethod
+    def addlocation(Continent='', Country='', Region='', City=''):
         dialog = SimpleLineEdit(title="Title")
         if dialog.exec() == QDialog.Accepted:
-            Country = dialog.Country_LineEdit.text()
-            print(Country)
-            Region = dialog.Region_LineEdit.text()
-            print(Region)
-            City = dialog.City_LineEdit.text()
-            print(City)
+            # Error if any piece is blank
+            try:
+                if Country == '':
+                    raise Exception("Empty Country, Dummy Bunny!")
+                Continent = dialog.Cont_Cb.currentText()
+                print(Continent)
+                Country = dialog.Country_LineEdit.text()
+                print(Country)
+                Region = dialog.Region_LineEdit.text()
+                print(Region)
+                City = dialog.City_LineEdit.text()
+                print(City)
+            except Exception:
+                print('Something was blank, dummy bunny!')
 
 ########################################################################################################################
 class MainWidget(QMainWindow, Ui_MainWindow):
@@ -173,7 +181,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
     # Event Handler for clicking add location buttun on break tab
     def slot_addloc_on_clicked(self):
-        AddLocation.addlocation(self)
+        AddLocation.addlocation()
 
     # This is the event handler (slot) for the submit button being clicked.
     def slot_breaksubmit_on_clicked(self):
@@ -223,7 +231,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
     # Event Handler for clicking add location button on bio tab
     def slot_bioaddlocbut_on_clicked(self):
-        AddLocation.addlocation(self)
+        AddLocation.addlocation()
 
     # Event Handler for opeing images
     def slot_bioaddimage_on_clicked(self):
