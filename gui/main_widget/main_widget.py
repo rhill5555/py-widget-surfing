@@ -7,7 +7,8 @@ from gui.main_widget.ui_to_py.wsl_analytics_ui import Ui_MainWindow
 
 from gui.common_widget.dialog_widget.simple_lineedit import SimpleLineEdit
 
-
+########################################################################################################################
+# Define Places
 class Places:
     class Continent(Enum):
         Africa = 1
@@ -34,7 +35,20 @@ class Places:
     class Eastern_Cape(Enum):
         Jeffreys_Bay = 1
 
+########################################################################################################################
+# Add Location Button
+class AddLocation:
+    def addlocation(self):
+        dialog = SimpleLineEdit(title="Title")
+        if dialog.exec() == QDialog.Accepted:
+            Country = dialog.Country_LineEdit.text()
+            print(Country)
+            Region = dialog.Region_LineEdit.text()
+            print(Region)
+            City = dialog.City_LineEdit.text()
+            print(City)
 
+########################################################################################################################
 class MainWidget(QMainWindow, Ui_MainWindow):
     def __init__(self):
         # Call the constructor for the inherited QWidget class.
@@ -59,6 +73,8 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.addlocationbutton.clicked.connect(self.slot_addloc_on_clicked)
         self.BioAddlocbutton.clicked.connect(self.slot_bioaddlocbut_on_clicked)
 
+    ####################################################################################################################
+    # Event Handlers for Breaks Tab
 
     # This setups up everything at the first startup.
     def on_startup(self):
@@ -169,15 +185,18 @@ class MainWidget(QMainWindow, Ui_MainWindow):
             breakburn = 'Exhausting'
         print(breakburn)
 
+    # Event Handler for clicking add location buttun on break tab
     def slot_addloc_on_clicked(self):
-        dialog = SimpleLineEdit(title = "Title")
-        if dialog.exec() == QDialog.Accepted:
-            Country = dialog.Country_LineEdit.text()
-            print(Country)
-            Region = dialog.Region_LineEdit.text()
-            print(Region)
-            City = dialog.City_LineEdit.text()
-            print(City)
+        AddLocation.addlocation(self)
+
+
+    ####################################################################################################################
+    # Event Handlers for Bio Tab
+
+
+    # Event Handler for clicking add location button on bio tab
+    def slot_bioaddlocbut_on_clicked(self):
+        AddLocation.addlocation(self)
 
 if __name__ == '__main__':
     app = QApplication([])
