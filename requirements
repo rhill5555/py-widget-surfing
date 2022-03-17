@@ -3,3 +3,4 @@ pyqt5-tools
 pyqt5-stubs
 numpy
 pandas
+mysql-connector-python

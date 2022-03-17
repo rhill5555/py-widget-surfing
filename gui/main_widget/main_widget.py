@@ -1,10 +1,17 @@
 import sys
 from enum import Enum
-
-from PyQt5.QtGui import QPixmap
+import mysql.connector
 from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QDialog, QFileDialog
 from gui.main_widget.ui_to_py.wsl_analytics_ui import Ui_MainWindow
 from gui.common_widget.dialog_widget.simple_lineedit import SimpleLineEdit
+
+########################################################################################################################
+# Connect to MySQL
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="Heather",
+  password="#LAwaItly19"
+)
 
 ########################################################################################################################
 # Define Places
