@@ -13,6 +13,7 @@ mydb = mysql.connector.connect(
   password="#LAwaItly19"
 )
 
+
 ########################################################################################################################
 # Define Places
 class Places:
