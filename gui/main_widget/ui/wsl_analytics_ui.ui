@@ -548,7 +548,7 @@ QTabBar::tab:!selected {
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="breakformtab">
        <attribute name="title">
@@ -792,8 +792,8 @@ QTabBar::tab:!selected {
          <rect>
           <x>170</x>
           <y>460</y>
-          <width>93</width>
-          <height>28</height>
+          <width>150</width>
+          <height>40</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -824,6 +824,404 @@ QTabBar::tab:!selected {
        <attribute name="title">
         <string>Bios</string>
        </attribute>
+       <widget class="QWidget" name="formLayoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>30</y>
+          <width>361</width>
+          <height>381</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="BioLeftForm">
+         <property name="horizontalSpacing">
+          <number>10</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QLabel" name="BioFirNme">
+           <property name="text">
+            <string>First Name:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="BioFirNmeLine">
+           <property name="styleSheet">
+            <string notr="true">background: #fcf4ff</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="BioLastNme">
+           <property name="text">
+            <string>Last Name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="BioLastNmeLine">
+           <property name="styleSheet">
+            <string notr="true">background: #fcf4ff</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="2" column="1">
+          <spacer name="horizontalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="BioStance">
+           <property name="text">
+            <string>Stance:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QRadioButton" name="BioGoofBut">
+             <property name="text">
+              <string>Goofy</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="BioRegBut">
+             <property name="text">
+              <string>Regular</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="BioBday">
+           <property name="text">
+            <string>Birthday:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLineEdit" name="BioBdayLine">
+           <property name="styleSheet">
+            <string notr="true">background: #fcf4ff</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <spacer name="horizontalSpacer_7">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="6" column="1">
+          <spacer name="horizontalSpacer_8">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="BioHt">
+           <property name="text">
+            <string>Height (cm):</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QLineEdit" name="BioHtLine">
+           <property name="styleSheet">
+            <string notr="true">background: #fcf4ff</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="BioWt">
+           <property name="text">
+            <string>Weight (kg):</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QLineEdit" name="BioWtLine">
+           <property name="styleSheet">
+            <string notr="true">background: #fcf4ff</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <spacer name="horizontalSpacer_9">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="9" column="1">
+          <spacer name="horizontalSpacer_10">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="10" column="0">
+          <widget class="QLabel" name="BioFirseason">
+           <property name="text">
+            <string>First Season:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="1">
+          <widget class="QComboBox" name="BioFirSeasonCb">
+           <property name="styleSheet">
+            <string notr="true">background: #fcf4ff</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="0">
+          <widget class="QLabel" name="BioFirtour">
+           <property name="text">
+            <string>First Tour:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="1">
+          <widget class="QComboBox" name="BioFirTourCb">
+           <property name="styleSheet">
+            <string notr="true">background: #fcf4ff</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="BioCount">
+           <property name="text">
+            <string>Country:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="BioCountCb">
+           <property name="styleSheet">
+            <string notr="true">background: #fcf4ff</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="verticalLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>30</y>
+          <width>371</width>
+          <height>201</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="RightVertLayout">
+         <item>
+          <widget class="QLabel" name="BioHometownLabel">
+           <property name="font">
+            <font>
+             <family>Verdana</family>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <italic>false</italic>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font-weight: bold;</string>
+           </property>
+           <property name="text">
+            <string>Home Town</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QFormLayout" name="RightFormLayout">
+           <item row="1" column="0">
+            <widget class="QLabel" name="BioHCont">
+             <property name="text">
+              <string>Continent:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="BioHCountry">
+             <property name="text">
+              <string>Country:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_16">
+             <property name="text">
+              <string>State/Region:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="BioHCity">
+             <property name="text">
+              <string>City</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <spacer name="horizontalSpacer_11">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="0" column="1">
+            <spacer name="horizontalSpacer_12">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="1" column="1">
+            <widget class="QComboBox" name="BioHContCb">
+             <property name="styleSheet">
+              <string notr="true">background: #fcf4ff</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QComboBox" name="BioHCountryCb">
+             <property name="styleSheet">
+              <string notr="true">background: #fcf4ff</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QComboBox" name="BioHRegCb">
+             <property name="styleSheet">
+              <string notr="true">background: #fcf4ff</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QComboBox" name="BioHCityCb">
+             <property name="styleSheet">
+              <string notr="true">background: #fcf4ff</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QPushButton" name="BioAddlocbutton">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>260</y>
+          <width>150</width>
+          <height>40</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background: #dcb3ff;</string>
+        </property>
+        <property name="text">
+         <string>Add Location</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="BioAddimagebut">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>330</y>
+          <width>150</width>
+          <height>40</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background: #89ecda;</string>
+        </property>
+        <property name="text">
+         <string>Add Image</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="BioSubmitBut">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>450</y>
+          <width>150</width>
+          <height>40</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background: #ff93ac;</string>
+        </property>
+        <property name="text">
+         <string>Submit</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="breakschedtab">
        <attribute name="title">
