@@ -1,9 +1,16 @@
 import sys
+from enum import Enum
 
 import PyQt5.QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QVBoxLayout, QLabel, QApplication, QDialogButtonBox
 
+cont_lst = ['Africa',
+            'Asia',
+            'Europe',
+            'North America',
+            'Oceania',
+            'South America']
 
 class SimpleLineEdit(QDialog):
     def __init__(self, title, left=10, top=10, width=520, height=400, parent=None):
@@ -31,6 +38,13 @@ class SimpleLineEdit(QDialog):
         self.setWindowFlag(Qt.WindowCloseButtonHint, False)
         # Disable help button
         self.setWindowFlag(Qt.WindowContextHelpButtonHint, False)
+
+        # Continent Label and Combobox
+        self.layout.addWidget(QLabel("Continent"))
+        self.Cont_Cb = PyQt5.QtWidgets.QComboBox()
+        self.layout.addWidget(self.Cont_Cb)
+        self.Cont_Cb.clear()
+        self.Cont_Cb.addItems(cont_lst)
 
         # Country Label and Line Edit
         self.layout.addWidget(QLabel("Country"))
