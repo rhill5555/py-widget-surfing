@@ -5,10 +5,8 @@ class SqlComm:
     @staticmethod
     def append_to_table(mysql_connection: MySQLConnection, table: str, columns: str, fields: str):
         mycursor = mysql_connection.cursor()
-        mycursor.execute(f"""INSERT INTO '{table}' ({columns}) VALUES
-                             ({fields}) 
-                             """)
-        result = mycursor.fetchall()
+        mycursor.execute(f"""INSERT INTO {table} ({columns}) VALUES ({fields});""")
+        mysql_connection.commit()
 
 class Places:
     @staticmethod

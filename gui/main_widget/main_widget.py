@@ -78,7 +78,6 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         if dialog.exec() == QDialog.Accepted:
             # Continent should never be blank since it has a default
             Continent = dialog.Cont_Cb.currentText()
-            print(Continent)
 
             # Check to See if Country is Blank for Label and LineEdit
             if not dialog.Country_LineEdit.text() == '':
@@ -89,7 +88,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                 print(Country)
             else:
                 print('Country was blank, Dummy Bunny!')
-                raise ValueError()
+                #raise ValueError()
 
 
             # Check to See if Region is Blank for Label and LineEdit
@@ -101,7 +100,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                 print(Region)
             else:
                 print('Region was blank, Dummy Bunny!')
-                raise ValueError()
+                #raise ValueError()
 
             # Check to see if City is Blank for Label and LineEdit
             if not dialog.City_LineEdit.text() == '':
@@ -109,29 +108,68 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                 print(City)
             else:
                 print('City was blank, Dummy Bunny!')
-                raise ValueError()
+                #raise ValueError()
 
-        # Add to continents table and raise exception if failed
+        # Add Country to Country Table and raise exception if failed
         try:
-            # Add Continent to Continent Table
-            table = 'wsl.continents'
-            columns = 'continent'
-            fields = (f"'{Continent}'")
-            print(f"Table:{table} Columns:{columns} Fields:{fields}")
-            print('Continent Added')# Logic to add to table
-
-            # Add Country to Country Table
-            table = 'wsl.countries'
-            mycursor = self.mysql.cursor()
-            mycursor.execute(f"""SELECT id from wsl.continents where continent = '{Continent}'""")
-            result = mycursor.fetchall()
-            continent_id = result[0][0]
-            fields = {f"'{Country}', continent_id"}
-            print(f"Table:{table} Columns:{columns} Fields:{fields}")
-            print('Country Added')  # Logic to add to table
-            #SqlComm.append_to_table()
+            if not dialog.Country_LineEdit.text() == '':
+                Country = dialog.Country_LineEdit.text()
+                print(Country)
+                table = 'wsl.countries'
+                columns = 'country, continent_id'
+                mycursor = self.mysql.cursor()
+                mycursor.execute(f"""SELECT id as continent_id from wsl.continents where continent = '{Continent}'""")
+                result = mycursor.fetchall()
+                continent_id = result[0][0]
+                fields = f"'{Country}', {continent_id}"
+                print(f"Table:{table} Columns:{columns} Fields:{fields}")
+                SqlComm.append_to_table(
+                    mysql_connection=self.mysql,
+                    table=table,
+                    columns=columns,
+                    fields=fields
+                )
+                print('Country Added')  # Logic to add to table
         except Exception:
             print('Could not append data to wsl.countries')
+
+        # Add Region to Region Table and raise exception if failed
+        try:
+            if not dialog.Region_LineEdit.text() == '':
+                Region = dialog.Region_LineEdit.text()
+                table = 'wsl.regions'
+                columns = 'region, country_id'
+                mycursor = self.mysql.cursor()
+                mycursor.execute(f"""SELECT id as country_id from wsl.countries where country = '{Country}'""")
+                result = mycursor.fetchall()
+                country_id = result[0][0]
+                fields = f"'{Region}', {country_id}"
+                print(f"Table:{table} Columns:{columns} Fields:{fields}")
+                SqlComm.append_to_table(mysql_connection=self.mysql,
+                      table=table,
+                      columns=columns,
+                      fields=fields)
+                print('Region Added')  # Logic to add to table
+        except Exception:
+            print('Could not append data to wsl.regions')
+
+        # Add City to City Table and raise exception if failed
+        try:
+            table = 'wsl.cities'
+            columns = 'city, region_id'
+            mycursor = self.mysql.cursor()
+            mycursor.execute(f"""SELECT id as region_id from wsl.regions where region = '{Region}'""")
+            result = mycursor.fetchall()
+            region_id = result[0][0]
+            fields = f"'{City}', {region_id}"
+            print(f"Table:{table} Columns:{columns} Fields:{fields}")
+            SqlComm.append_to_table(mysql_connection=self.mysql,
+                table=table,
+                columns=columns,
+                fields=fields)
+            print('City Added')  # Logic to add to table
+        except:
+            print('Could not append data to wsl.cities')
 
     ####################################################################################################################
     # Event Handlers for Breaks Tab
