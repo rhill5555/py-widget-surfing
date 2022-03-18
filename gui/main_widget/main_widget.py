@@ -49,7 +49,11 @@ class Places:
     @staticmethod
     def region(mysql_connection: MySQLConnection, country: str):
         mycursor = mysql_connection.cursor()
-        mycursor.execute("select region from wsl.regions")
+        mycursor.execute(f"""select region.region
+                         from wsl.regions region
+                         join wsl.countries country
+                              on region.country_id = country.id
+                         where country.country = '{country}'""")
         result = mycursor.fetchall()
 
         region_lst = []
@@ -179,27 +183,10 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
     # This is the event handler (slot) for the combobox "breakcountrycb" changing index.
     def slot_break_country_cb_on_index_change(self):
-        if self.BreakCountryCb.currentText() == "Eastern_Cape":
-            # Clear the Region Combobox.
-            self.BreakRegionCb.clear()
-            # Add the regions.
-            self.BreakRegionCb.addItems(
-                Places.Africa.Eastern_Cape.value
-            )
-        elif self.BreakCountryCb.currentText() == "USA":
-            # Clear the Region Combobox.
-            self.BreakRegionCb.clear()
-            # Add the regions.
-            self.BreakRegionCb.addItems(
-                Places.NorthAmerica.USA.value
-            )
-        elif self.BreakCountryCb.currentText() == "Mexico":
-            # Clear the Region Combobox.
-            self.BreakRegionCb.clear()
-            # Add the regions.
-            self.BreakRegionCb.addItems(
-                Places.NorthAmerica.Mexico.value
-            )
+        self.BreakRegionCb.clear()
+        self.BreakRegionCb.addItems([item[0] for item in Places.region(mysql_connection=self.mysql,
+                                                                           country=self.BreakCountryCb.currentText())])
+
 
     # This is the event handler (slot) for the combobox "breakregioncb" changing index.
     def slot_break_region_cb_on_index_change(self):
