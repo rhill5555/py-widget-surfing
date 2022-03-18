@@ -43,28 +43,25 @@ class SimpleLineEdit(QDialog):
 
         # Continent Label and Combobox
         self.HLayoutCont.addWidget(QLabel("Continent:"))
-
         self.Cont_Cb = PyQt5.QtWidgets.QComboBox()
         self.HLayoutCont.addWidget(self.Cont_Cb)
-        self.Cont_Cb.clear()
-        self.Cont_Cb.addItems(
-            [item[0] for item in Places.continent(mysql_connection=mysql_conn)]
-        )
+        # self.Cont_Cb.clear()
+        # self.Cont_Cb.addItems(
+        #     [item[0] for item in Places.continent(mysql_connection=mysql_conn)]
+        # )
         self.Cont_Cb.setFixedWidth(200)
-
         self.HLayoutCont.addWidget(QLabel(''))
-
         self.layout.addLayout(self.HLayoutCont)
 
         # Country Label and Line Edit
         self.HLayoutCountry.addWidget(QLabel("Country:"))
-
         self.Country_Cb = PyQt5.QtWidgets.QComboBox()
         self.HLayoutCountry.addWidget(self.Country_Cb)
-        self.Country_Cb.clear()
-        #self.Country_Cb.addItems()
+        # self.Country_Cb.clear()
+        # self.Country_Cb.addItems(
+        #     [item[0] for item in Places.countries(mysql_connection=mysql_conn,
+        #                                           continent=self.Cont_Cb.currentText())])
         self.Country_Cb.setFixedWidth(200)
-
         self.Country_LineEdit = PyQt5.QtWidgets.QLineEdit()
         self.HLayoutCountry.addWidget(self.Country_LineEdit)
         self.Country_LineEdit.setFixedWidth(200)
@@ -102,6 +99,35 @@ class SimpleLineEdit(QDialog):
         self.layout.addWidget(self.ButtonBox)
 
         self.setLayout(self.layout)
+
+        self.on_startup()
+
+        self.connect_slots()
+
+    # This defines the event handlers for everything.
+    def connect_slots(self):
+        self.Cont_Cb.currentIndexChanged.connect(self.slot_cont_cb_on_index_change)
+        self.Country_Cb.currentIndexChanged.connect(self.slot_country_cb_on_index_change)
+
+    # This setups up everything at the first startup.
+    def on_startup(self):
+        # Add Continents to the combobox.
+        self.Cont_Cb.addItems(
+            [item[0] for item in Places.continent(mysql_connection=self.mysql)]
+        )
+
+    def slot_cont_cb_on_index_change(self):
+        self.Country_Cb.clear()
+        self.Country_Cb.addItems(
+            [item[0] for item in Places.countries(mysql_connection=self.mysql,
+                                                  continent=self.Cont_Cb.currentText())])
+
+    def slot_country_cb_on_index_change(self):
+        self.Region_Cb.clear()
+        self.Region_Cb.addItems(
+            [item[0] for item in Places.region(mysql_connection=self.mysql,
+                                               country=self.Country_Cb.currentText())]
+        )
 
 
 if __name__ == '__main__':
