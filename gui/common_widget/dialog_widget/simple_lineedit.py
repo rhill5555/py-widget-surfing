@@ -1,7 +1,7 @@
 import sys
 import PyQt5.QtWidgets
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QSpacerItem, QSizePolicy, QLabel, QApplication, QDialogButtonBox
+from PyQt5.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QLabel, QApplication, QDialogButtonBox
 
 from src.place_hier import Places
 

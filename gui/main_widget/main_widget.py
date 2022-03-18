@@ -89,6 +89,13 @@ class MainWidget(QMainWindow, Ui_MainWindow):
             except Exception:
                 print('Something was blank, dummy bunny!')
 
+        # Add to continents table and raise exception if failed
+        try:
+            table = wsl.continents
+            # Logic to add to table
+        except Exception:
+            print('Could not append data to wsl.continents')
+
     ####################################################################################################################
     # Event Handlers for Breaks Tab
 
