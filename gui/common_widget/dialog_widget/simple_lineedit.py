@@ -3,7 +3,7 @@ from enum import Enum
 
 import PyQt5.QtWidgets
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QDialog, QVBoxLayout, QLabel, QApplication, QDialogButtonBox
+from PyQt5.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QSpacerItem, QSizePolicy, QLabel, QApplication, QDialogButtonBox
 
 cont_lst = ['Africa',
             'Asia',
@@ -34,32 +34,68 @@ class SimpleLineEdit(QDialog):
         # Create Vertical Layout Box
         self.layout = QVBoxLayout()
 
+        # Create Horizontal Layouts
+        self.HLayoutCont = QHBoxLayout()
+        self.HLayoutCountry = QHBoxLayout()
+        self.HLayoutReg = QHBoxLayout()
+        self.HLayoutCity = QHBoxLayout()
+
         # Disable x button to force "yes" or "no" click
         self.setWindowFlag(Qt.WindowCloseButtonHint, False)
         # Disable help button
         self.setWindowFlag(Qt.WindowContextHelpButtonHint, False)
 
         # Continent Label and Combobox
-        self.layout.addWidget(QLabel("Continent"))
+        self.HLayoutCont.addWidget(QLabel("Continent:"))
+
         self.Cont_Cb = PyQt5.QtWidgets.QComboBox()
-        self.layout.addWidget(self.Cont_Cb)
+        self.HLayoutCont.addWidget(self.Cont_Cb)
         self.Cont_Cb.clear()
         self.Cont_Cb.addItems(cont_lst)
+        self.Cont_Cb.setFixedWidth(200)
+
+        self.HLayoutCont.addWidget(QLabel(''))
+
+        self.layout.addLayout(self.HLayoutCont)
 
         # Country Label and Line Edit
-        self.layout.addWidget(QLabel("Country"))
+        self.HLayoutCountry.addWidget(QLabel("Country:"))
+
+        self.Country_Cb = PyQt5.QtWidgets.QComboBox()
+        self.HLayoutCountry.addWidget(self.Country_Cb)
+        self.Country_Cb.clear()
+        #self.Country_Cb.addItems()
+        self.Country_Cb.setFixedWidth(200)
+
         self.Country_LineEdit = PyQt5.QtWidgets.QLineEdit()
-        self.layout.addWidget(self.Country_LineEdit)
+        self.HLayoutCountry.addWidget(self.Country_LineEdit)
+        self.Country_LineEdit.setFixedWidth(200)
+
+        self.layout.addLayout(self.HLayoutCountry)
 
         # Region Label and Line Edit
-        self.layout.addWidget(QLabel("Region"))
+        self.HLayoutReg.addWidget(QLabel("Region:"))
+
+        self.Region_Cb = PyQt5.QtWidgets.QComboBox()
+        self.HLayoutReg.addWidget(self.Region_Cb)
+        self.Region_Cb.clear()
+        # self.Region_Cb.addItems()
+        self.Region_Cb.setFixedWidth(200)
+
         self.Region_LineEdit = PyQt5.QtWidgets.QLineEdit()
-        self.layout.addWidget(self.Region_LineEdit)
+        self.HLayoutReg.addWidget(self.Region_LineEdit)
+        self.Region_LineEdit.setFixedWidth(200)
+
+        self.layout.addLayout(self.HLayoutReg)
+
 
         # City Label and Line Edit
-        self.layout.addWidget(QLabel("City"))
+        self.HLayoutCity.addWidget(QLabel("City:"))
         self.City_LineEdit = PyQt5.QtWidgets.QLineEdit()
-        self.layout.addWidget(self.City_LineEdit)
+        self.HLayoutCity.addWidget(self.City_LineEdit)
+        self.City_LineEdit.setFixedWidth(200)
+        self.HLayoutCity.addWidget(QLabel(''))
+        self.layout.addLayout(self.HLayoutCity)
 
         Q_Btn = QDialogButtonBox.Ok | QDialogButtonBox.Cancel
         self.ButtonBox = QDialogButtonBox(Q_Btn)
