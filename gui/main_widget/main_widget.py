@@ -1,5 +1,5 @@
 import sys
-from src.place_hier import Places
+from src.sql_commands import Places, SqlComm
 from typing import Optional, List
 
 import mysql.connector
@@ -76,25 +76,62 @@ class MainWidget(QMainWindow, Ui_MainWindow):
     def slot_add_location_btn_on_clicked(self):
         dialog = SimpleLineEdit(title="Add a location to the database.", mysql_conn=self.mysql)
         if dialog.exec() == QDialog.Accepted:
-            # Error if any piece is blank
-            try:
-                Continent = dialog.Cont_Cb.currentText()
-                print(Continent)
+            # Continent should never be blank since it has a default
+            Continent = dialog.Cont_Cb.currentText()
+            print(Continent)
+
+            # Check to See if Country is Blank for Label and LineEdit
+            if not dialog.Country_LineEdit.text() == '':
                 Country = dialog.Country_LineEdit.text()
                 print(Country)
+            elif not dialog.Country_Cb.currentText() == '':
+                Country = dialog.Country_Cb.currentText()
+                print(Country)
+            else:
+                print('Country was blank, Dummy Bunny!')
+                raise ValueError()
+
+
+            # Check to See if Region is Blank for Label and LineEdit
+            if not dialog.Region_LineEdit.text() == '':
                 Region = dialog.Region_LineEdit.text()
                 print(Region)
+            elif not dialog.Region_Cb.currentText() == '':
+                Region = dialog.Region_Cb.currentText()
+                print(Region)
+            else:
+                print('Region was blank, Dummy Bunny!')
+                raise ValueError()
+
+            # Check to see if City is Blank for Label and LineEdit
+            if not dialog.City_LineEdit.text() == '':
                 City = dialog.City_LineEdit.text()
                 print(City)
-            except Exception:
-                print('Something was blank, dummy bunny!')
+            else:
+                print('City was blank, Dummy Bunny!')
+                raise ValueError()
 
         # Add to continents table and raise exception if failed
         try:
-            table = wsl.continents
-            # Logic to add to table
+            # Add Continent to Continent Table
+            table = 'wsl.continents'
+            columns = 'continent'
+            fields = (f"'{Continent}'")
+            print(f"Table:{table} Columns:{columns} Fields:{fields}")
+            print('Continent Added')# Logic to add to table
+
+            # Add Country to Country Table
+            table = 'wsl.countries'
+            mycursor = self.mysql.cursor()
+            mycursor.execute(f"""SELECT id from wsl.continents where continent = '{Continent}'""")
+            result = mycursor.fetchall()
+            continent_id = result[0][0]
+            fields = {f"'{Country}', continent_id"}
+            print(f"Table:{table} Columns:{columns} Fields:{fields}")
+            print('Country Added')  # Logic to add to table
+            #SqlComm.append_to_table()
         except Exception:
-            print('Could not append data to wsl.continents')
+            print('Could not append data to wsl.countries')
 
     ####################################################################################################################
     # Event Handlers for Breaks Tab

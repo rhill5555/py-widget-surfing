@@ -3,7 +3,7 @@ import PyQt5.QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QLabel, QApplication, QDialogButtonBox
 
-from src.place_hier import Places
+from src.sql_commands import Places
 
 
 class SimpleLineEdit(QDialog):
