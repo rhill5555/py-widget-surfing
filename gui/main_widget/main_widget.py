@@ -1,5 +1,7 @@
 import sys
 from enum import Enum
+from typing import Optional, List
+
 import mysql.connector
 from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QDialog, QFileDialog
 from gui.main_widget.ui_to_py.wsl_analytics_ui import Ui_MainWindow
@@ -13,16 +15,28 @@ mydb = mysql.connector.connect(
   password="#LAwaItly19"
 )
 
+# mycursor = mydb.cursor()
+# mycursor.execute("select * from wsl.continents")
+# myresult = mycursor.fetchall()
+#
+# for x in myresult:
+#     print(x)
+
+
 ########################################################################################################################
 # Define Places
 class Places:
-    class Continent(Enum):
-        Africa = 1
-        Asia = 2
-        Europe = 3
-        North_America = 4
-        Oceania = 5
-        South_America = 6
+    @staticmethod
+    def Continent():
+        mycursor = mydb.cursor()
+        mycursor.execute("select continent from wsl.continents")
+        result = mycursor.fetchall()
+
+        cont_lst = []
+        for x in result:
+            cont_lst.append(x)
+
+        return cont_lst
 
     class Africa(Enum):
         Eastern_Cape = ["Eastern_Cape"]
@@ -56,6 +70,10 @@ class AddLocation:
             try:
                 if Country == '':
                     raise Exception("Empty Country, Dummy Bunny!")
+                if Region == '':
+                    raise Exception("Empty Region, Dummy Bunny!")
+                if City == '':
+                    raise Exception("Empty City, Dummy Bunny!")
                 Continent = dialog.Cont_Cb.currentText()
                 print(Continent)
                 Country = dialog.Country_LineEdit.text()
@@ -104,7 +122,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
     def on_startup(self):
         # Add Continents to the combobox.
         self.BreakContCb.addItems(
-            [item.name for item in Places.Continent]
+            [item[0] for item in Places.Continent()]
         )
 
     # This is the event handler (slot) for the combobox "breakcontcb" changing index.
