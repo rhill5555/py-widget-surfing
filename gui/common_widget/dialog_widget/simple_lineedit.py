@@ -3,17 +3,15 @@ import PyQt5.QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QSpacerItem, QSizePolicy, QLabel, QApplication, QDialogButtonBox
 
-cont_lst = ['Africa',
-            'Asia',
-            'Europe',
-            'North America',
-            'Oceania',
-            'South America']
+from src.place_hier import Places
+
 
 class SimpleLineEdit(QDialog):
-    def __init__(self, title, left=10, top=10, width=520, height=400, parent=None):
+    def __init__(self, title, mysql_conn, left=10, top=10, width=520, height=400, parent=None):
         # Calls constructor for QDialog
         super().__init__(parent=parent)
+
+        self.mysql = mysql_conn
 
         # Set Title
         self.setWindowTitle(title)
@@ -49,7 +47,9 @@ class SimpleLineEdit(QDialog):
         self.Cont_Cb = PyQt5.QtWidgets.QComboBox()
         self.HLayoutCont.addWidget(self.Cont_Cb)
         self.Cont_Cb.clear()
-        self.Cont_Cb.addItems(cont_lst)
+        self.Cont_Cb.addItems(
+            [item[0] for item in Places.continent(mysql_connection=mysql_conn)]
+        )
         self.Cont_Cb.setFixedWidth(200)
 
         self.HLayoutCont.addWidget(QLabel(''))

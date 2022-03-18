@@ -73,9 +73,8 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         )
 
     # Eventhandler for any button that adds a location to the database.
-    @staticmethod
-    def slot_add_location_btn_on_clicked():
-        dialog = SimpleLineEdit(title="Add a location to the database.")
+    def slot_add_location_btn_on_clicked(self):
+        dialog = SimpleLineEdit(title="Add a location to the database.", mysql_conn=self.mysql)
         if dialog.exec() == QDialog.Accepted:
             # Error if any piece is blank
             try:
