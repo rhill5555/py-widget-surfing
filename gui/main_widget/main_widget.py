@@ -317,7 +317,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                 print(rep_country)
                 first_season = self.BioFirSeasonCb.currentText()
                 print(first_season)
-                first_tour = self.BioFirTourCb.currentText()
+                first_tour = self.BioFirstTourLine.text()
                 print(first_tour)
 
                 home_city = self.BioHCityCb.currentText()
@@ -363,13 +363,35 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                     Stance = ''
                 print(Stance)
 
+                if self.MaleBox.isChecked() and self.FemaleBox.isChecked():
+                    print("Choose either Male or Female Tour")
+                elif self.MaleBox.isChecked():
+                    gender = 'Male'
+                elif self.FemaleBox.isChecked():
+                    gender = 'Female'
+                else:
+                    gender = ''
+                print(gender)
+
             else:
                 print("Last Name is blank, Dummy Bunny!")
         else:
             print("First Name is blank, Dummy Bunny!")
 
+        # Add to Bios Table
+        try:
+            table = 'wsl.bios'
+            columns = 'first_name, last_name, stance, rep_county, home_city, birthday, height, weight, first_season, first_tour'
+            fields = f"'{first_name}', '{last_name}', '{Stance}', '{rep_country}', {city_id[0][0]}, '{birthday}', {height}, {weight}, {first_season}, '{first_tour}'"
+            print(f"Table:{table} Columns:{columns} Fields:{fields}")
+            SqlComm.append_to_table(mysql_connection=self.mysql,
+                                    table=table,
+                                    columns=columns,
+                                    fields=fields)
+            print('Bio Added')  # Logic to add to table
 
-
+        except:
+            print('Could not append data to wsl.bios')
 ########################################################################################################################
 if __name__ == '__main__':
     app = QApplication([])
