@@ -8,6 +8,18 @@ class SqlComm:
         mycursor.execute(f"""INSERT INTO {table} ({columns}) VALUES ({fields});""")
         mysql_connection.commit()
 
+    @staticmethod
+    def sel_dist_col(mysql_connection: MySQLConnection, table: str, column: str):
+        mycursor = mysql_connection.cursor()
+        mycursor.execute(f"""SELECT {column} FROM {table}""")
+        result = mycursor.fetchall()
+
+        field_lst = []
+        for x in result:
+            field_lst.append(x)
+
+        return field_lst
+
 class Places:
     @staticmethod
     def continent(mysql_connection: MySQLConnection):
@@ -20,6 +32,18 @@ class Places:
             cont_lst.append(x)
 
         return cont_lst
+
+    @staticmethod
+    def rep_countries(mysql_connection: MySQLConnection):
+        mycursor = mysql_connection.cursor()
+        mycursor.execute("select country from wsl.countries")
+        result = mycursor.fetchall()
+
+        country_lst = []
+        for x in result:
+            country_lst.append(x)
+
+        return country_lst
 
     @staticmethod
     def countries(mysql_connection: MySQLConnection, continent: str):

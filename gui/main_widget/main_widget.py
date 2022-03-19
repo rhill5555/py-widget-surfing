@@ -1,3 +1,4 @@
+import datetime
 import sys
 from src.sql_commands import Places, SqlComm
 from typing import Optional, List
@@ -51,6 +52,14 @@ class MainWidget(QMainWindow, Ui_MainWindow):
             )
         return self.__mysql_connection
 
+    def num_check(self, input_num: str):
+        try:
+            if input_num == '':
+                input_num = 0
+            int(input_num)
+        except:
+            print('Invalid Number')
+
     # This defines the event handlers for everything.
     def connect_slots(self):
         # Slots for Break Tab
@@ -74,17 +83,15 @@ class MainWidget(QMainWindow, Ui_MainWindow):
             [item[0] for item in Places.continent(mysql_connection=self.mysql)]
         )
         self.BioCountCb.addItems(
-            [item[0] for item in Places.countries(mysql_connection=self.mysql, continent='Africa')]
+            [item[0] for item in Places.rep_countries(mysql_connection=self.mysql)]
+        )
+        self.BioFirSeasonCb.addItems(
+            [item for item in ['2022', '2021', '2020', '2019']]
         )
         self.BioHContCb.addItems(
             [item[0] for item in Places.continent(mysql_connection=self.mysql)]
         )
-        self.BioHRegCb.addItems(
-            [item[0] for item in Places.region(mysql_connection=self.mysql, country='South Africa')]
-        )
-        self.BioHCityCb.addItems(
-            [item[0] for item in Places.city(mysql_connection=self.mysql, region='Eastern Cape')]
-        )
+        self.BioHCountryCb.clear()
 
     # Eventhandler for any button that adds a location to the database.
     def slot_add_location_btn_on_clicked(self):
@@ -272,6 +279,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
     # Bio Tab
 
     # Bio Continent Select
+
     def slot_bio_cont_cb_index_changed(self):
         self.BioHCountryCb.clear()
         self.BioHCountryCb.addItems([item[0] for item in Places.countries(mysql_connection=self.mysql,
@@ -279,13 +287,13 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
     def slot_bio_country_cb_index_changed(self):
         self.BioHRegCb.clear()
-        self.BioHRegCb.addItems([item[0] for item in Places.countries(mysql_connection=self.mysql,
-                                                                           continent=self.BioHRegCb.currentText())])
+        self.BioHRegCb.addItems([item[0] for item in Places.region(mysql_connection=self.mysql,
+                                                                           country=self.BioHCountryCb.currentText())])
 
     def slot_bio_region_cb_index_changed(self):
         self.BioHCityCb.clear()
-        self.BioHCityCb.addItems([item[0] for item in Places.countries(mysql_connection=self.mysql,
-                                                                           continent=self.BioHCityCb.currentText())])
+        self.BioHCityCb.addItems([item[0] for item in Places.city(mysql_connection=self.mysql,
+                                                                           region=self.BioHRegCb.currentText())])
 
     # Bio Tab Submit
     def slot_bio_submit_on_clicked(self):
@@ -293,7 +301,61 @@ class MainWidget(QMainWindow, Ui_MainWindow):
             print('First Name Success')
             if not self.BioLastNmeLine.text() == '':
                 print('Last Name Success')
-                # Assign Values
+
+                first_name = self.BioFirNmeLine.text()
+                print(first_name)
+                last_name = self.BioLastNmeLine.text()
+                print(last_name)
+
+                rep_country = self.BioCountCb.currentText()
+                print(rep_country)
+                first_season = self.BioFirSeasonCb.currentText()
+                print(first_season)
+                first_tour = self.BioFirTourCb.currentText()
+                print(first_tour)
+
+                home_city = self.BioHCityCb.currentText()
+                print(home_city)
+                table = 'wsl.continents'
+                column = 'continent'
+                SqlComm.sel_dist_col(mysql_connection=self.mysql, table=table, column=column)
+
+
+                try:
+                    if self.BioBdayLine.text() == '':
+                        birthday = '01/01/1900'
+                    else:
+                        dt_string = self.BioBdayLine.text()
+                        dt_format = '%m/%d/%Y'
+                        birthday = datetime.datetime.strptime(dt_string, dt_format)
+                        print(birthday)
+                except:
+                    print(f"Oh No! That day of birth is not on the Gregorian Calendar!" )
+
+                ht = self.BioHtLine.text()
+                if ht == '':
+                    height = 0
+                else:
+                    self.num_check(input_num=ht)
+                    height = int(ht)
+                print(height)
+
+                wt = self.BioWtLine.text()
+                if wt == '':
+                    weight = 0
+                else:
+                    self.num_check(input_num=wt)
+                    weight = int(wt)
+                print(weight)
+
+                if self.BioRegBut.isChecked():
+                    Stance = 'R'
+                elif self.BioGoofBut.isChecked():
+                    Stance = 'G'
+                else:
+                    Stance = ''
+                print(Stance)
+
             else:
                 print("Last Name is blank, Dummy Bunny!")
         else:
