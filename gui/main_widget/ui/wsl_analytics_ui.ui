@@ -796,6 +796,13 @@ QTabBar::tab:!selected {
            </item>
           </layout>
          </item>
+         <item row="9" column="1">
+          <widget class="QCheckBox" name="BreakBreakwaterBox">
+           <property name="text">
+            <string>Breakwater</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
        <widget class="QPushButton" name="BreakSubmit">
