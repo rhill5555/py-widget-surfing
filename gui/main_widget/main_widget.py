@@ -227,6 +227,8 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                 tempbreaklst.append('River')
             if self.BreakEngBox.isChecked():
                 tempbreaklst.append('Engineered')
+            if self.BreakSandbarBox.isChecked():
+                tempbreaklst.append('Sandbar')
             return tempbreaklst
 
         # Check to see if Break is Blank for Label and LineEdit
