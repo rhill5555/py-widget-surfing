@@ -73,6 +73,18 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.BreakContCb.addItems(
             [item[0] for item in Places.continent(mysql_connection=self.mysql)]
         )
+        self.BioCountCb.addItems(
+            [item[0] for item in Places.countries(mysql_connection=self.mysql, continent='Africa')]
+        )
+        self.BioHContCb.addItems(
+            [item[0] for item in Places.continent(mysql_connection=self.mysql)]
+        )
+        self.BioHRegCb.addItems(
+            [item[0] for item in Places.region(mysql_connection=self.mysql, country='South Africa')]
+        )
+        self.BioHCityCb.addItems(
+            [item[0] for item in Places.city(mysql_connection=self.mysql, region='Eastern Cape')]
+        )
 
     # Eventhandler for any button that adds a location to the database.
     def slot_add_location_btn_on_clicked(self):
@@ -277,7 +289,16 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
     # Bio Tab Submit
     def slot_bio_submit_on_clicked(self):
-        pass
+        if not self.BioFirNmeLine.text() == '':
+            print('First Name Success')
+            if not self.BioLastNmeLine.text() == '':
+                print('Last Name Success')
+                # Assign Values
+            else:
+                print("Last Name is blank, Dummy Bunny!")
+        else:
+            print("First Name is blank, Dummy Bunny!")
+
 
 
 ########################################################################################################################
