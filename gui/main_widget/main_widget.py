@@ -61,6 +61,9 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.BreakSubmit.clicked.connect(self.slot_break_submit_on_clicked)
 
         # Slots for Bio Tab
+        self.BioHContCb.currentIndexChanged.connect(self.slot_bio_cont_cb_index_changed)
+        self.BioHCountryCb.currentIndexChanged.connect(self.slot_bio_country_cb_index_changed)
+        self.BioHRegCb.currentIndexChanged.connect(self.slot_bio_region_cb_index_changed)
         self.BioAddlocbutton.clicked.connect(self.slot_add_location_btn_on_clicked)
         self.BioSubmitBut.clicked.connect(self.slot_bio_submit_on_clicked)
 
@@ -255,6 +258,22 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
     ####################################################################################################################
     # Bio Tab
+
+    # Bio Continent Select
+    def slot_bio_cont_cb_index_changed(self):
+        self.BioHCountryCb.clear()
+        self.BioHCountryCb.addItems([item[0] for item in Places.countries(mysql_connection=self.mysql,
+                                                                           continent=self.BioHContCb.currentText())])
+
+    def slot_bio_country_cb_index_changed(self):
+        self.BioHRegCb.clear()
+        self.BioHRegCb.addItems([item[0] for item in Places.countries(mysql_connection=self.mysql,
+                                                                           continent=self.BioHRegCb.currentText())])
+
+    def slot_bio_region_cb_index_changed(self):
+        self.BioHCityCb.clear()
+        self.BioHCityCb.addItems([item[0] for item in Places.countries(mysql_connection=self.mysql,
+                                                                           continent=self.BioHCityCb.currentText())])
 
     # Bio Tab Submit
     def slot_bio_submit_on_clicked(self):
