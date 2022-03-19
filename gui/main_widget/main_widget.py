@@ -322,10 +322,11 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
                 home_city = self.BioHCityCb.currentText()
                 print(home_city)
-                table = 'wsl.continents'
-                column = 'continent'
-                SqlComm.sel_dist_col(mysql_connection=self.mysql, table=table, column=column)
-
+                table = 'wsl.cities'
+                column = 'id'
+                filter = f"where city = '{home_city}'"
+                city_id = SqlComm.sel_dist_col(mysql_connection=self.mysql, table=table, column=column, filter=filter)
+                print(f"city_id: {city_id[0][0]}")
 
                 try:
                     if self.BioBdayLine.text() == '':

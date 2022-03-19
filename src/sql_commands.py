@@ -8,16 +8,16 @@ class SqlComm:
         mycursor.execute(f"""INSERT INTO {table} ({columns}) VALUES ({fields});""")
         mysql_connection.commit()
 
-    @staticmethod
-    def sel_dist_col(mysql_connection: MySQLConnection, table: str, column: str):
+    def sel_dist_col(mysql_connection: MySQLConnection, table: str, column: str, filter: str):
         mycursor = mysql_connection.cursor()
-        mycursor.execute(f"""SELECT {column} FROM {table}""")
+        mycursor.execute(f"""SELECT {column} FROM {table} {filter}""")
         result = mycursor.fetchall()
 
         field_lst = []
         for x in result:
             field_lst.append(x)
 
+        print(field_lst[0][0])
         return field_lst
 
 class Places:
