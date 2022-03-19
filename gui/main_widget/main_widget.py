@@ -208,31 +208,51 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                 tempbreaklst.append('Engineered')
             return tempbreaklst
 
-        breakCont = self.BreakContCb.currentText()
-        print(breakCont)
+        # Check to see if Break is Blank for Label and LineEdit
+        if not self.BreakBreakEntry.text() == '':
+            Break = self.BreakBreakEntry.text()
+            print(Break)
+            breakCity = self.BreakCityCb.currentText()
+            print(breakCity)
+            breaktype = breaktypelst()
+            print(breaktype)
 
-        breakCountry = self.BreakCountryCb.currentText()
-        print(breakCountry)
+            if self.BreakBurnLight.isChecked():
+                breakburn = 'Light'
+            elif self.BreakBurnMed.isChecked():
+                breakburn = 'Medium'
+            elif self.BreakBurnEx.isChecked():
+                breakburn = 'Exhausting'
+            print(breakburn)
+        else:
+            print('Break was blank, Dummy Bunny!')
+            # raise ValueError()
 
-        breakRegion = self.BreakRegionCb.currentText()
-        print(breakRegion)
+        breaktype_str_1 = ""
+        # Add Break to Break Table and raise exception if failed
+        try:
+            table = 'wsl.breaks'
+            columns = 'break, city_id, break_type, sldr_burn'
+            mycursor = self.mysql.cursor()
+            mycursor.execute(f"""SELECT id as city_id from wsl.cities where city = '{breakCity}'""")
+            result = mycursor.fetchall()
+            city_id = result[0][0]
 
-        breakCity = self.BreakCityCb.currentText()
-        print(breakCity)
+            for ind, item in enumerate(breaktype):
+                if not ind == (len(breaktype) - 1):
+                    breaktype_str_1 = breaktype_str_1 + item + ', '
+                else:
+                    breaktype_str_1 = breaktype_str_1 + item
 
-        breakName = self.BreakBreakEntry.text()
-        print(breakName)
-
-        breaktype = breaktypelst()
-        print(breaktype)
-
-        if self.BreakBurnLight.isChecked():
-            breakburn = 'Light'
-        elif self.BreakBurnMed.isChecked():
-            breakburn = 'Medium'
-        elif self.BreakBurnEx.isChecked():
-            breakburn = 'Exhausting'
-        print(breakburn)
+            fields = f"'{Break}', {city_id}, '{breaktype_str_1}', '{breakburn}'"
+            print(f"Table:{table} Columns:{columns} Fields:{fields}")
+            SqlComm.append_to_table(mysql_connection=self.mysql,
+                                    table=table,
+                                    columns=columns,
+                                    fields=fields)
+            print('Break Added')  # Logic to add to table
+        except:
+            print('Could not append data to wsl.breaks')
 
     ####################################################################################################################
 
