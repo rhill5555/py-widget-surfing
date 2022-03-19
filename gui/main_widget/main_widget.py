@@ -62,7 +62,6 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
         # Slots for Bio Tab
         self.BioAddlocbutton.clicked.connect(self.slot_add_location_btn_on_clicked)
-        self.BioAddimagebut.clicked.connect(self.slot_bio_add_image_on_clicked)
         self.BioSubmitBut.clicked.connect(self.slot_bio_submit_on_clicked)
 
     # This setups up everything at the first startup.
@@ -255,10 +254,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
             print('Could not append data to wsl.breaks')
 
     ####################################################################################################################
-
-    # Event Handler for opening images
-    def slot_bio_add_image_on_clicked(self):
-        pass
+    # Bio Tab
 
     # Bio Tab Submit
     def slot_bio_submit_on_clicked(self):
