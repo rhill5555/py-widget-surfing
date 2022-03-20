@@ -374,7 +374,8 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                 elif self.FemaleBox.isChecked():
                     gender = 'Female'
                 else:
-                    gender = ''
+                    print("Select Male or Female Tour")
+                    raise ValueError
                 print(gender)
 
             else:
