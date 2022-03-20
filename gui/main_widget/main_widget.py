@@ -85,9 +85,6 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.BioCountCb.addItems(
             [item[0] for item in Places.rep_countries(mysql_connection=self.mysql)]
         )
-        self.BioFirSeasonCb.addItems(
-            [item for item in ['2022', '2021', '2020', '2019']]
-        )
         self.BioHContCb.addItems(
             [item[0] for item in Places.continent(mysql_connection=self.mysql)]
         )
@@ -315,7 +312,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
                 rep_country = self.BioCountCb.currentText()
                 print(rep_country)
-                first_season = self.BioFirSeasonCb.currentText()
+                first_season = self.BioFirSeasonCb.text()
                 print(first_season)
                 first_tour = self.BioFirstTourLine.text()
                 print(first_tour)
