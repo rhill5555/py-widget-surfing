@@ -4,7 +4,7 @@ from src.sql_commands import Places, SqlComm
 from typing import Optional, List
 
 import mysql.connector
-from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QDialog, QFileDialog
+from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QDialog, QFileDialog, QButtonGroup
 from mysql.connector import MySQLConnection
 
 from gui.main_widget.ui_to_py.wsl_analytics_ui import Ui_MainWindow
@@ -385,8 +385,8 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         # Add to Bios Table
         try:
             table = 'wsl.bios'
-            columns = 'first_name, last_name, stance, rep_country, home_city, birthday, height, weight, first_season, first_tour'
-            fields = f"'{first_name}', '{last_name}', '{Stance}', '{rep_country}', {city_id}, '{birthday}', {height}, {weight}, '{first_season}', '{first_tour}'"
+            columns = 'gender, first_name, last_name, stance, rep_country, home_city, birthday, height, weight, first_season, first_tour'
+            fields = f"'{gender}', '{first_name}', '{last_name}', '{Stance}', '{rep_country}', {city_id}, '{birthday}', {height}, {weight}, '{first_season}', '{first_tour}'"
             print(f"Table:{table} Columns:{columns} Fields:{fields}")
             SqlComm.append_to_table(mysql_connection=self.mysql,
                                     table=table,
@@ -405,6 +405,10 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.BioFirSeasonCb.clear()
         self.BioFirstTourLine.clear()
         self.BioHContCb.clear()
+        self.MaleBox.setChecked(0)
+        self.FemaleBox.setChecked(0)
+
+
 ########################################################################################################################
 if __name__ == '__main__':
     app = QApplication([])
