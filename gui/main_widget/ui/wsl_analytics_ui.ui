@@ -1052,13 +1052,6 @@ QTabBar::tab:!selected {
            </property>
           </widget>
          </item>
-         <item row="10" column="1">
-          <widget class="QComboBox" name="BioFirSeasonCb">
-           <property name="styleSheet">
-            <string notr="true">background: #fcf4ff</string>
-           </property>
-          </widget>
-         </item>
          <item row="11" column="0">
           <widget class="QLabel" name="BioFirtour">
            <property name="text">
@@ -1082,6 +1075,13 @@ QTabBar::tab:!selected {
          </item>
          <item row="11" column="1">
           <widget class="QLineEdit" name="BioFirstTourLine">
+           <property name="styleSheet">
+            <string notr="true">background: #fcf4ff</string>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="1">
+          <widget class="QLineEdit" name="BioFirSeasonCb">
            <property name="styleSheet">
             <string notr="true">background: #fcf4ff</string>
            </property>
