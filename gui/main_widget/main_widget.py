@@ -195,7 +195,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
             print('Could not append data to wsl.cities')
 
     ####################################################################################################################
-    # Event Handlers for Breaks Tab
+    # Breaks Data Entry Tab
 
     # This is the event handler (slot) for the combobox "breakcontcb" changing index.
     def slot_break_cont_cb_on_index_change(self):
@@ -284,7 +284,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
             print('Could not append data to wsl.breaks')
 
     ####################################################################################################################
-    # Bio Tab
+    # Bio Data Entry Tab
 
     # Bio Continent Select
 
@@ -410,7 +410,11 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.BioRegBut.setChecked(0)
         self.BioGoofBut.setChecked(0)
 
+    ####################################################################################################################
+    # Schedule Data Entry Tab
+
 ########################################################################################################################
+
 if __name__ == '__main__':
     app = QApplication([])
     win = MainWidget(sql_host='localhost', sql_user='Heather', sql_password='#LAwaItly19')
