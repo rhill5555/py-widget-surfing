@@ -97,8 +97,10 @@ class Places:
     @staticmethod
     def surf_break(mysql_connection: MySQLConnection, continent: str):
         mycursor = mysql_connection.cursor()
-        mycursor.execute(f"""select city.city
-                                 from wsl.cities city
+        mycursor.execute(f"""select break.break
+                                 from wsl.breaks break
+                                 join wsl.cities city
+                                      on break.city_id = city.id
                                  join wsl.regions region
                                       on city.region_id = region.id
                                  join wsl.countries country

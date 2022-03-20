@@ -351,7 +351,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                         birthday = datetime.datetime.strptime(dt_string, dt_format)
                         print(birthday)
                 except:
-                    print(f"Oh No! That day of birth is not on the Gregorian Calendar!" )
+                    print(f"Oh No! That day of birth is not on the Gregorian Calendar!")
 
                 ht = self.BioHtLine.text()
                 if ht == '':
@@ -434,7 +434,10 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                 print(season)
                 tour_name = self.SchedNameLine.text()
                 print(tour_name)
+
                 stop_nbr = self.SchedStopLine.text()
+                self.num_check(input_num=stop_nbr)
+                stop_nbr = int(stop_nbr)
                 print(stop_nbr)
 
                 try:
@@ -486,6 +489,20 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         else:
             print("Stop Number is blank, Dummy Bunny!")
 
+        # Add to Schedule Table
+        try:
+            table = 'wsl.schedule'
+            columns = 'gender, season, tour_name, stop_nbr, break_id, open_date, close_date'
+            fields = f"'{gender}', '{season}', '{tour_name}', {stop_nbr}, {break_id}, '{open_date}', '{close_date}'"
+            print(f"Table:{table} Columns:{columns} Fields:{fields}")
+            SqlComm.append_to_table(mysql_connection=self.mysql,
+                                    table=table,
+                                    columns=columns,
+                                    fields=fields)
+            print('Tour Added')  # Logic to add to table
+
+        except:
+            print('Could not append data to wsl.schedule')
 
         # Clear Form on Submit
         self.SchedSeasonLine.clear()
@@ -495,7 +512,6 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.SchedCloseDtLine.clear()
         self.MaleBoxSched.setChecked(0)
         self.FemaleBoxSched.setChecked(0)
-
 
 ########################################################################################################################
 
