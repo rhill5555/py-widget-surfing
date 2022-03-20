@@ -1291,7 +1291,7 @@ QTabBar::tab:!selected {
           <x>60</x>
           <y>40</y>
           <width>271</width>
-          <height>221</height>
+          <height>261</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="formLayout">
@@ -1302,50 +1302,8 @@ QTabBar::tab:!selected {
            </property>
           </widget>
          </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="SchedBreak">
-           <property name="text">
-            <string>Break:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="SchedName">
-           <property name="text">
-            <string>Name:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="SchedStop">
-           <property name="text">
-            <string>Stop #:</string>
-           </property>
-          </widget>
-         </item>
          <item row="0" column="1">
           <widget class="QLineEdit" name="SchedSeasonLine">
-           <property name="styleSheet">
-            <string notr="true">background: #fcf4ff</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLineEdit" name="SchedNameLine">
-           <property name="styleSheet">
-            <string notr="true">background: #fcf4ff</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QLineEdit" name="SchedStopLine">
-           <property name="styleSheet">
-            <string notr="true">background: #fcf4ff</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="1">
-          <widget class="QComboBox" name="SchedBreakCb">
            <property name="styleSheet">
             <string notr="true">background: #fcf4ff</string>
            </property>
@@ -1364,6 +1322,20 @@ QTabBar::tab:!selected {
            </property>
           </spacer>
          </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="SchedName">
+           <property name="text">
+            <string>Name:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="SchedNameLine">
+           <property name="styleSheet">
+            <string notr="true">background: #fcf4ff</string>
+           </property>
+          </widget>
+         </item>
          <item row="3" column="0">
           <spacer name="verticalSpacer_2">
            <property name="orientation">
@@ -1376,6 +1348,20 @@ QTabBar::tab:!selected {
             </size>
            </property>
           </spacer>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="SchedStop">
+           <property name="text">
+            <string>Stop #:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLineEdit" name="SchedStopLine">
+           <property name="styleSheet">
+            <string notr="true">background: #fcf4ff</string>
+           </property>
+          </widget>
          </item>
          <item row="5" column="0">
           <spacer name="verticalSpacer_3">
@@ -1390,13 +1376,41 @@ QTabBar::tab:!selected {
            </property>
           </spacer>
          </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="SchedBreak">
+           <property name="text">
+            <string>Break:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QComboBox" name="SchedBreakCb">
+           <property name="styleSheet">
+            <string notr="true">background: #fcf4ff</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="SchedCont">
+           <property name="text">
+            <string>Continent:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QComboBox" name="SchedContCb">
+           <property name="styleSheet">
+            <string notr="true">background: #fcf4ff</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
        <widget class="QWidget" name="formLayoutWidget_4">
         <property name="geometry">
          <rect>
           <x>450</x>
-          <y>70</y>
+          <y>80</y>
           <width>251</width>
           <height>91</height>
          </rect>
@@ -1449,9 +1463,9 @@ QTabBar::tab:!selected {
         <property name="geometry">
          <rect>
           <x>450</x>
-          <y>220</y>
+          <y>250</y>
           <width>150</width>
-          <height>40</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -1465,7 +1479,7 @@ QTabBar::tab:!selected {
         <property name="geometry">
          <rect>
           <x>120</x>
-          <y>320</y>
+          <y>330</y>
           <width>141</width>
           <height>61</height>
          </rect>
