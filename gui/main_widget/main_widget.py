@@ -77,16 +77,19 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.BioSubmitBut.clicked.connect(self.slot_bio_submit_on_clicked)
 
         # Slots for Schedule Data Entry Tab
-
+        self.SchedContCb.currentIndexChanged.connect(self.slot_sched_cont_cb_index_changed)
+        self.SchedSubmitBut.clicked.connect(self.slot_sched_submit_on_clicked)
 
     # This setups up everything at the first startup.
     def on_startup(self):
         bio_cont_list = [item for item in Places.continent(mysql_connection=self.mysql)]
 
-        # Add Continents to the combobox.
+        # Break Data Entry Tab
         self.BreakContCb.addItems(
             [item for item in Places.continent(mysql_connection=self.mysql)]
         )
+
+        # Bio Data Entry Tab
         self.BioCountCb.addItems(
             [item for item in Places.rep_countries(mysql_connection=self.mysql)]
         )
@@ -97,6 +100,12 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.BioHCountryCb.addItems([''])
         self.BioHRegCb.addItems([''])
         self.BioHCityCb.addItems([''])
+
+        # Schedule Data Entry Tab
+        self.SchedContCb.addItems(
+            [''] + bio_cont_list
+         )
+        #self.SchedBreakCb.addItems([''])
 
     # Eventhandler for any button that adds a location to the database.
     def slot_add_location_btn_on_clicked(self):
@@ -416,6 +425,12 @@ class MainWidget(QMainWindow, Ui_MainWindow):
     ####################################################################################################################
     # Schedule Data Entry Tab
 
+    def slot_sched_cont_cb_index_changed(self):
+        self.SchedBreakCb.clear()
+        self.SchedBreakCb.addItems([item for item in Places.surf_break(mysql_connection=self.mysql, continent=self.SchedContCb.currentText())])
+
+    def slot_sched_submit_on_clicked(self):
+        pass
 
 ########################################################################################################################
 

@@ -95,5 +95,21 @@ class Places:
         return sorted(city_lst, key=str.lower)
 
     @staticmethod
-    def surf_break(mysql_connection: MySQLConnection, city: str):
-        pass
+    def surf_break(mysql_connection: MySQLConnection, continent: str):
+        mycursor = mysql_connection.cursor()
+        mycursor.execute(f"""select city.city
+                                 from wsl.cities city
+                                 join wsl.regions region
+                                      on city.region_id = region.id
+                                 join wsl.countries country
+                                      on region.country_id = country.id
+                                 join wsl.continents continent
+                                      on country.continent_id = continent.id
+                                 where continent = '{continent}'""")
+        result = mycursor.fetchall()
+
+        surf_break_lst = []
+        for x in result:
+            surf_break_lst.append(x[0])
+
+        return sorted(surf_break_lst, key=str.lower)
