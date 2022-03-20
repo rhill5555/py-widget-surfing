@@ -90,7 +90,7 @@ border-color: rgb(1, 31, 75);</string>
 
  QTabBar::tab {
   background: #bae1ff;
-  font-family: Papyrus;
+  font-family: Bahnschrift Semibold;
  }
 
  QTabBar::tab:selected {
@@ -117,7 +117,7 @@ border-color: rgb(1, 31, 75);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 32pt Papyrus;
+       <string notr="true">font: 32pt Bahnschrift SemiBold;
 border-color: rgb(0, 0, 0);
 color: rgb(255, 98, 137);</string>
       </property>
@@ -241,7 +241,7 @@ color: rgb(196, 98, 253);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 32pt Papyrus;
+       <string notr="true">font: 32pt Bahnschrift SemiBold;
 border-color: rgb(0, 0, 0);
 color: rgb(255, 98, 137);</string>
       </property>
@@ -391,7 +391,7 @@ color: rgb(196, 98, 253);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 32pt Papyrus;
+       <string notr="true">font: 32pt Bahnschrift SemiBold;
 border-color: rgb(0, 0, 0);
 color: rgb(255, 98, 137);</string>
       </property>
@@ -490,7 +490,7 @@ color: rgb(196, 98, 253);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 32pt Papyrus;
+       <string notr="true">font: 32pt Bahnschrift SemiBold;
 border-color: rgb(0, 0, 0);
 color: rgb(255, 98, 137);</string>
       </property>

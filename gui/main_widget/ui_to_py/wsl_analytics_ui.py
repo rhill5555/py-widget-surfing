@@ -61,7 +61,7 @@ class Ui_MainWindow(object):
 "\n"
 " QTabBar::tab {\n"
 "  background: #bae1ff;\n"
-"  font-family: Papyrus;\n"
+"  font-family: Bahnschrift Semibold;\n"
 " }\n"
 "\n"
 " QTabBar::tab:selected {\n"
@@ -73,7 +73,7 @@ class Ui_MainWindow(object):
         self.tabSched.setObjectName("tabSched")
         self.scheduleLabel = QtWidgets.QLabel(self.tabSched)
         self.scheduleLabel.setGeometry(QtCore.QRect(435, 60, 230, 71))
-        self.scheduleLabel.setStyleSheet("font: 32pt Papyrus;\n"
+        self.scheduleLabel.setStyleSheet("font: 32pt Bahnschrift SemiBold;\n"
 "border-color: rgb(0, 0, 0);\n"
 "color: rgb(255, 98, 137);")
         self.scheduleLabel.setObjectName("scheduleLabel")
@@ -131,7 +131,7 @@ class Ui_MainWindow(object):
         self.SurferHLinePink.setObjectName("SurferHLinePink")
         self.scheduleLabel_3 = QtWidgets.QLabel(self.tabSurfer)
         self.scheduleLabel_3.setGeometry(QtCore.QRect(459, 60, 182, 71))
-        self.scheduleLabel_3.setStyleSheet("font: 32pt Papyrus;\n"
+        self.scheduleLabel_3.setStyleSheet("font: 32pt Bahnschrift SemiBold;\n"
 "border-color: rgb(0, 0, 0);\n"
 "color: rgb(255, 98, 137);")
         self.scheduleLabel_3.setObjectName("scheduleLabel_3")
@@ -202,7 +202,7 @@ class Ui_MainWindow(object):
         self.AnaHLinePink.setObjectName("AnaHLinePink")
         self.scheduleLabel_4 = QtWidgets.QLabel(self.tabAna)
         self.scheduleLabel_4.setGeometry(QtCore.QRect(379, 60, 342, 71))
-        self.scheduleLabel_4.setStyleSheet("font: 32pt Papyrus;\n"
+        self.scheduleLabel_4.setStyleSheet("font: 32pt Bahnschrift SemiBold;\n"
 "border-color: rgb(0, 0, 0);\n"
 "color: rgb(255, 98, 137);")
         self.scheduleLabel_4.setObjectName("scheduleLabel_4")
@@ -248,7 +248,7 @@ class Ui_MainWindow(object):
         self.DataHLinePink.setObjectName("DataHLinePink")
         self.scheduleLabel_5 = QtWidgets.QLabel(self.tabData)
         self.scheduleLabel_5.setGeometry(QtCore.QRect(410, 60, 280, 71))
-        self.scheduleLabel_5.setStyleSheet("font: 32pt Papyrus;\n"
+        self.scheduleLabel_5.setStyleSheet("font: 32pt Bahnschrift SemiBold;\n"
 "border-color: rgb(0, 0, 0);\n"
 "color: rgb(255, 98, 137);")
         self.scheduleLabel_5.setObjectName("scheduleLabel_5")
