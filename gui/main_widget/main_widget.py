@@ -62,19 +62,22 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
     # This defines the event handlers for everything.
     def connect_slots(self):
-        # Slots for Break Tab
+        # Slots for Break Data Entry Tab
         self.BreakContCb.currentIndexChanged.connect(self.slot_break_cont_cb_on_index_change)
         self.BreakCountryCb.currentIndexChanged.connect(self.slot_break_country_cb_on_index_change)
         self.BreakRegionCb.currentIndexChanged.connect(self.slot_break_region_cb_on_index_change)
         self.addlocationbutton.clicked.connect(self.slot_add_location_btn_on_clicked)
         self.BreakSubmit.clicked.connect(self.slot_break_submit_on_clicked)
 
-        # Slots for Bio Tab
+        # Slots for Bio Data Entry Tab
         self.BioHContCb.currentIndexChanged.connect(self.slot_bio_cont_cb_index_changed)
         self.BioHCountryCb.currentIndexChanged.connect(self.slot_bio_country_cb_index_changed)
         self.BioHRegCb.currentIndexChanged.connect(self.slot_bio_region_cb_index_changed)
         self.BioAddlocbutton.clicked.connect(self.slot_add_location_btn_on_clicked)
         self.BioSubmitBut.clicked.connect(self.slot_bio_submit_on_clicked)
+
+        # Slots for Schedule Data Entry Tab
+
 
     # This setups up everything at the first startup.
     def on_startup(self):
@@ -412,6 +415,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
     ####################################################################################################################
     # Schedule Data Entry Tab
+
 
 ########################################################################################################################
 
