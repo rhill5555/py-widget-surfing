@@ -6,11 +6,12 @@ class SqlComm:
     def append_to_table(mysql_connection: MySQLConnection, table: str, columns: str, fields: str):
         mycursor = mysql_connection.cursor()
         mycursor.execute(f"""INSERT INTO {table} ({columns}) VALUES ({fields});""")
+        #mycursor.execute(f"""INSERT INTO wsl.bios (first_name, last_name, stance, rep_country, home_city, birthday, height, weight, first_season, first_tour) VALUES ('H', 'G', 'R', 'USA', 1, '1989-10-25', 100, 120, '2021', 'test');""")
         mysql_connection.commit()
 
-    def sel_dist_col(mysql_connection: MySQLConnection, table: str, column: str, filter: str):
+    def sel_dist_col(mysql_connection: MySQLConnection, table: str, column: str, col_filter: str):
         mycursor = mysql_connection.cursor()
-        mycursor.execute(f"""SELECT {column} FROM {table} {filter}""")
+        mycursor.execute(f"""SELECT {column} FROM {table} {col_filter}""")
         result = mycursor.fetchall()
 
         field_lst = []

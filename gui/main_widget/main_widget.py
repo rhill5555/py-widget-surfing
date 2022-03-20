@@ -324,13 +324,13 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                 print(home_city)
                 table = 'wsl.cities'
                 column = 'id'
-                filter = f"where city = '{home_city}'"
-                city_id = SqlComm.sel_dist_col(mysql_connection=self.mysql, table=table, column=column, filter=filter)
+                col_filter = f"where city = '{home_city}'"
+                city_id = SqlComm.sel_dist_col(mysql_connection=self.mysql, table=table, column=column, col_filter=col_filter)
                 print(f"city_id: {city_id[0][0]}")
 
                 try:
                     if self.BioBdayLine.text() == '':
-                        birthday = '01/01/1900'
+                        birthday = '1900-01-01'
                     else:
                         dt_string = self.BioBdayLine.text()
                         dt_format = '%m/%d/%Y'
@@ -381,8 +381,8 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         # Add to Bios Table
         try:
             table = 'wsl.bios'
-            columns = 'first_name, last_name, stance, rep_county, home_city, birthday, height, weight, first_season, first_tour'
-            fields = f"'{first_name}', '{last_name}', '{Stance}', '{rep_country}', {city_id[0][0]}, '{birthday}', {height}, {weight}, {first_season}, '{first_tour}'"
+            columns = 'first_name, last_name, stance, rep_country, home_city, birthday, height, weight, first_season, first_tour'
+            fields = f"'{first_name}', '{last_name}', '{Stance}', '{rep_country}', {city_id[0][0]}, '{birthday}', {height}, {weight}, '{first_season}', '{first_tour}'"
             print(f"Table:{table} Columns:{columns} Fields:{fields}")
             SqlComm.append_to_table(mysql_connection=self.mysql,
                                     table=table,
