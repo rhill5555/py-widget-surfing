@@ -91,6 +91,9 @@ class MainWidget(QMainWindow, Ui_MainWindow):
             [''] + bio_cont_list
         )
         self.BioHCountryCb.clear()
+        self.BioHCountryCb.addItems([''])
+        self.BioHRegCb.addItems([''])
+        self.BioHCityCb.addItems([''])
 
     # Eventhandler for any button that adds a location to the database.
     def slot_add_location_btn_on_clicked(self):
@@ -319,13 +322,15 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                 first_tour = self.BioFirstTourLine.text()
                 print(first_tour)
 
-                home_city = self.BioHCityCb.currentText()
-                print(home_city)
-                table = 'wsl.cities'
-                column = 'id'
-                col_filter = f"where city = '{home_city}'"
-                city_id = SqlComm.sel_dist_col(mysql_connection=self.mysql, table=table, column=column, col_filter=col_filter)
-                print(f"city_id: {city_id[0][0]}")
+                if not self.BioHCityCb.currentText() == '':
+                    home_city = self.BioHCityCb.currentText()
+                    table = 'wsl.cities'
+                    column = 'id'
+                    col_filter = f"where city = '{home_city}'"
+                    city_id = SqlComm.sel_dist_col(mysql_connection=self.mysql, table=table, column=column, col_filter=col_filter)
+                    city_id = city_id[0][0]
+                else:
+                    city_id = 500
 
                 try:
                     if self.BioBdayLine.text() == '':
@@ -381,7 +386,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         try:
             table = 'wsl.bios'
             columns = 'first_name, last_name, stance, rep_country, home_city, birthday, height, weight, first_season, first_tour'
-            fields = f"'{first_name}', '{last_name}', '{Stance}', '{rep_country}', {city_id[0][0]}, '{birthday}', {height}, {weight}, '{first_season}', '{first_tour}'"
+            fields = f"'{first_name}', '{last_name}', '{Stance}', '{rep_country}', {city_id}, '{birthday}', {height}, {weight}, '{first_season}', '{first_tour}'"
             print(f"Table:{table} Columns:{columns} Fields:{fields}")
             SqlComm.append_to_table(mysql_connection=self.mysql,
                                     table=table,
