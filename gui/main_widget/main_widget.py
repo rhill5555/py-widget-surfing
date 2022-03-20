@@ -405,7 +405,6 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.BioWtLine.clear()
         self.BioFirSeasonCb.clear()
         self.BioFirstTourLine.clear()
-        self.BioHContCb.clear()
         self.MaleBox.setChecked(0)
         self.FemaleBox.setChecked(0)
         self.BioRegBut.setChecked(0)
