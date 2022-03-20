@@ -407,7 +407,8 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.BioHContCb.clear()
         self.MaleBox.setChecked(0)
         self.FemaleBox.setChecked(0)
-
+        self.BioRegBut.setChecked(0)
+        self.BioGoofBut.setChecked(0)
 
 ########################################################################################################################
 if __name__ == '__main__':
