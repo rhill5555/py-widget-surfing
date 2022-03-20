@@ -318,9 +318,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
     # Bio Tab Submit
     def slot_bio_submit_on_clicked(self):
         if not self.BioFirNmeLine.text() == '':
-            print('First Name Success')
             if not self.BioLastNmeLine.text() == '':
-                print('Last Name Success')
 
                 first_name = self.BioFirNmeLine.text()
                 print(first_name)
@@ -430,7 +428,65 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.SchedBreakCb.addItems([item for item in Places.surf_break(mysql_connection=self.mysql, continent=self.SchedContCb.currentText())])
 
     def slot_sched_submit_on_clicked(self):
-        pass
+        if not self.SchedSeasonLine.text() == '':
+            if not self.SchedStopLine.text() == '':
+                season = self.SchedSeasonLine.text()
+                print(season)
+                tour_name = self.SchedNameLine.text()
+                print(tour_name)
+                stop_nbr = self.SchedStopLine.text()
+                print(stop_nbr)
+                surf_break = self.SchedBreakCb.currentText()
+                print(surf_break)
+
+                try:
+                    if self.SchedOpenDtLine.text() == '':
+                        open_date = '1900-01-01'
+                    else:
+                        dt_string = self.SchedOpenDtLine.text()
+                        dt_format = '%m/%d/%Y'
+                        open_date = datetime.datetime.strptime(dt_string, dt_format)
+                        print(open_date)
+                except:
+                    print(f"Oh No! That day of opening is not on the Gregorian Calendar!")
+
+                try:
+                    if self.SchedCloseDtLine.text() == '':
+                        close_date = '1900-01-01'
+                    else:
+                        dt_string = self.SchedCloseDtLine.text()
+                        dt_format = '%m/%d/%Y'
+                        close_date = datetime.datetime.strptime(dt_string, dt_format)
+                        print(close_date)
+                except:
+                    print(f"Oh No! That day of closing is not on the Gregorian Calendar!")
+
+                if self.MaleBoxSched.isChecked() and self.FemaleBoxSched.isChecked():
+                    print("Choose either Male or Female Tour")
+                elif self.MaleBoxSched.isChecked():
+                    gender = 'Male'
+                elif self.FemaleBoxSched.isChecked():
+                    gender = 'Female'
+                else:
+                    print("Select Male or Female Tour")
+                    raise ValueError
+                print(gender)
+
+            else:
+                print("Season is blank, Dummy Bunny!")
+        else:
+            print("Stop Number is blank, Dummy Bunny!")
+
+
+        # Clear Form on Submit
+        self.SchedSeasonLine.clear()
+        self.SchedNameLine.clear()
+        self.SchedStopLine.clear()
+        self.SchedOpenDtLine.clear()
+        self.SchedCloseDtLine.clear()
+        self.MaleBoxSched.setChecked(0)
+        self.FemaleBoxSched.setChecked(0)
+
 
 ########################################################################################################################
 
