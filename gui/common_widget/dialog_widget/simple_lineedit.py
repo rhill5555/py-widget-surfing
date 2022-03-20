@@ -113,19 +113,19 @@ class SimpleLineEdit(QDialog):
     def on_startup(self):
         # Add Continents to the combobox.
         self.Cont_Cb.addItems(
-            [item[0] for item in Places.continent(mysql_connection=self.mysql)]
+            [item for item in Places.continent(mysql_connection=self.mysql)]
         )
 
     def slot_cont_cb_on_index_change(self):
         self.Country_Cb.clear()
         self.Country_Cb.addItems(
-            [item[0] for item in Places.countries(mysql_connection=self.mysql,
+            [item for item in Places.countries(mysql_connection=self.mysql,
                                                   continent=self.Cont_Cb.currentText())])
 
     def slot_country_cb_on_index_change(self):
         self.Region_Cb.clear()
         self.Region_Cb.addItems(
-            [item[0] for item in Places.region(mysql_connection=self.mysql,
+            [item for item in Places.region(mysql_connection=self.mysql,
                                                country=self.Country_Cb.currentText())]
         )
 

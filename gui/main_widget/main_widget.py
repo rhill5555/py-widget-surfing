@@ -85,7 +85,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
             [item for item in Places.continent(mysql_connection=self.mysql)]
         )
         self.BioCountCb.addItems(
-            [item[0] for item in Places.rep_countries(mysql_connection=self.mysql)]
+            [item for item in Places.rep_countries(mysql_connection=self.mysql)]
         )
         self.BioHContCb.addItems(
             [''] + bio_cont_list
@@ -200,19 +200,19 @@ class MainWidget(QMainWindow, Ui_MainWindow):
     # This is the event handler (slot) for the combobox "breakcontcb" changing index.
     def slot_break_cont_cb_on_index_change(self):
         self.BreakCountryCb.clear()
-        self.BreakCountryCb.addItems([item[0] for item in Places.countries(mysql_connection=self.mysql, continent=self.BreakContCb.currentText())])
+        self.BreakCountryCb.addItems([item for item in Places.countries(mysql_connection=self.mysql, continent=self.BreakContCb.currentText())])
 
     # This is the event handler (slot) for the combobox "breakcountrycb" changing index.
     def slot_break_country_cb_on_index_change(self):
         self.BreakRegionCb.clear()
-        self.BreakRegionCb.addItems([item[0] for item in Places.region(mysql_connection=self.mysql,
+        self.BreakRegionCb.addItems([item for item in Places.region(mysql_connection=self.mysql,
                                                                           country=self.BreakCountryCb.currentText())])
 
 
     # This is the event handler (slot) for the combobox "breakregioncb" changing index.
     def slot_break_region_cb_on_index_change(self):
         self.BreakCityCb.clear()
-        self.BreakCityCb.addItems([item[0] for item in Places.city(mysql_connection=self.mysql,
+        self.BreakCityCb.addItems([item for item in Places.city(mysql_connection=self.mysql,
                                                                        region=self.BreakRegionCb.currentText())])
 
     # This is the event handler (slot) for the submit button being clicked.
@@ -290,17 +290,17 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
     def slot_bio_cont_cb_index_changed(self):
         self.BioHCountryCb.clear()
-        self.BioHCountryCb.addItems([item[0] for item in Places.countries(mysql_connection=self.mysql,
+        self.BioHCountryCb.addItems([item for item in Places.countries(mysql_connection=self.mysql,
                                                                            continent=self.BioHContCb.currentText())])
 
     def slot_bio_country_cb_index_changed(self):
         self.BioHRegCb.clear()
-        self.BioHRegCb.addItems([item[0] for item in Places.region(mysql_connection=self.mysql,
+        self.BioHRegCb.addItems([item for item in Places.region(mysql_connection=self.mysql,
                                                                            country=self.BioHCountryCb.currentText())])
 
     def slot_bio_region_cb_index_changed(self):
         self.BioHCityCb.clear()
-        self.BioHCityCb.addItems([item[0] for item in Places.city(mysql_connection=self.mysql,
+        self.BioHCityCb.addItems([item for item in Places.city(mysql_connection=self.mysql,
                                                                            region=self.BioHRegCb.currentText())])
 
     # Bio Tab Submit

@@ -42,10 +42,9 @@ class Places:
 
         country_lst = []
         for x in result:
-            country_lst.append(x)
+            country_lst.append(x[0])
 
-        #return sorted(country_lst, key=str.lower)
-        return country_lst
+        return sorted(country_lst, key=str.lower)
 
     @staticmethod
     def countries(mysql_connection: MySQLConnection, continent: str):
@@ -59,10 +58,9 @@ class Places:
 
         country_lst = []
         for x in result:
-            country_lst.append(x)
+            country_lst.append(x[0])
 
-        #return sorted(country_lst, key=str.lower)
-        return country_lst
+        return sorted(country_lst, key=str.lower)
 
     @staticmethod
     def region(mysql_connection: MySQLConnection, country: str):
@@ -76,10 +74,9 @@ class Places:
 
         region_lst = []
         for x in result:
-            region_lst.append(x)
+            region_lst.append(x[0])
 
-        #return sorted(region_lst, key=str.lower)
-        return region_lst
+        return sorted(region_lst, key=str.lower)
 
     @staticmethod
     def city(mysql_connection: MySQLConnection, region: str):
@@ -93,10 +90,9 @@ class Places:
 
         city_lst = []
         for x in result:
-            city_lst.append(x)
+            city_lst.append(x[0])
 
-        #return sorted(city_lst, key=str.lower)
-        return city_lst
+        return sorted(city_lst, key=str.lower)
 
     @staticmethod
     def surf_break(mysql_connection: MySQLConnection, city: str):
