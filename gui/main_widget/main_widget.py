@@ -340,7 +340,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                     city_id = SqlComm.sel_dist_col(mysql_connection=self.mysql, table=table, column=column, col_filter=col_filter)
                     city_id = city_id[0][0]
                 else:
-                    city_id = 500
+                    city_id = 0
 
                 try:
                     if self.BioBdayLine.text() == '':
@@ -436,8 +436,6 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                 print(tour_name)
                 stop_nbr = self.SchedStopLine.text()
                 print(stop_nbr)
-                surf_break = self.SchedBreakCb.currentText()
-                print(surf_break)
 
                 try:
                     if self.SchedOpenDtLine.text() == '':
@@ -471,6 +469,17 @@ class MainWidget(QMainWindow, Ui_MainWindow):
                     print("Select Male or Female Tour")
                     raise ValueError
                 print(gender)
+
+                if not self.SchedBreakCb.currentText() == '':
+                    surf_break = self.SchedBreakCb.currentText()
+                    table = 'wsl.breaks'
+                    column = 'id'
+                    col_filter = f"where break = '{surf_break}'"
+                    break_id = SqlComm.sel_dist_col(mysql_connection=self.mysql, table=table, column=column, col_filter=col_filter)
+                    break_id = break_id[0][0]
+                    print(break_id)
+                else:
+                    break_id = 0
 
             else:
                 print("Season is blank, Dummy Bunny!")
