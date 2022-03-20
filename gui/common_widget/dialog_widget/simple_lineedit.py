@@ -47,7 +47,7 @@ class SimpleLineEdit(QDialog):
         self.HLayoutCont.addWidget(self.Cont_Cb)
         # self.Cont_Cb.clear()
         # self.Cont_Cb.addItems(
-        #     [item[0] for item in Places.continent(mysql_connection=mysql_conn)]
+        #     [item for item in Places.continent(mysql_connection=mysql_conn)]
         # )
         self.Cont_Cb.setFixedWidth(200)
         self.HLayoutCont.addWidget(QLabel(''))

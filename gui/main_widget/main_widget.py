@@ -78,11 +78,11 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
     # This setups up everything at the first startup.
     def on_startup(self):
-        bio_cont_list = [item[0] for item in Places.continent(mysql_connection=self.mysql)]
+        bio_cont_list = [item for item in Places.continent(mysql_connection=self.mysql)]
 
         # Add Continents to the combobox.
         self.BreakContCb.addItems(
-            [item[0] for item in Places.continent(mysql_connection=self.mysql)]
+            [item for item in Places.continent(mysql_connection=self.mysql)]
         )
         self.BioCountCb.addItems(
             [item[0] for item in Places.rep_countries(mysql_connection=self.mysql)]

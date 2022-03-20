@@ -30,9 +30,9 @@ class Places:
 
         cont_lst = []
         for x in result:
-            cont_lst.append(x)
+            cont_lst.append(x[0])
 
-        return cont_lst
+        return sorted(cont_lst, key=str.lower)
 
     @staticmethod
     def rep_countries(mysql_connection: MySQLConnection):
@@ -44,6 +44,7 @@ class Places:
         for x in result:
             country_lst.append(x)
 
+        #return sorted(country_lst, key=str.lower)
         return country_lst
 
     @staticmethod
@@ -60,6 +61,7 @@ class Places:
         for x in result:
             country_lst.append(x)
 
+        #return sorted(country_lst, key=str.lower)
         return country_lst
 
     @staticmethod
@@ -76,6 +78,7 @@ class Places:
         for x in result:
             region_lst.append(x)
 
+        #return sorted(region_lst, key=str.lower)
         return region_lst
 
     @staticmethod
@@ -92,6 +95,7 @@ class Places:
         for x in result:
             city_lst.append(x)
 
+        #return sorted(city_lst, key=str.lower)
         return city_lst
 
     @staticmethod
