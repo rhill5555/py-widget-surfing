@@ -396,6 +396,15 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
         except:
             print('Could not append data to wsl.bios')
+
+        self.BioFirNmeLine.clear()
+        self.BioLastNmeLine.clear()
+        self.BioBdayLine.clear()
+        self.BioHtLine.clear()
+        self.BioWtLine.clear()
+        self.BioFirSeasonCb.clear()
+        self.BioFirstTourLine.clear()
+        self.BioHContCb.clear()
 ########################################################################################################################
 if __name__ == '__main__':
     app = QApplication([])
